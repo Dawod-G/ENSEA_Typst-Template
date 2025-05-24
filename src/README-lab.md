@@ -30,7 +30,7 @@ All fields listed above are **mandatory**.
 ```typst
 #import "@preview/volt-lab-ensea:0.1.0": *
 
-#show: lab-report.with(
+#show: report.with(
   title: [#lorem(10)],
   authors: (
     "Jean DUPONT",

@@ -1,4 +1,4 @@
-// edited on 21/05/2025
+// edited on 24/05/2025
 
 // ============================
 // CONFIGURATION
@@ -29,10 +29,13 @@
   set pagebreak(weak: true)
 
   set text(font: "New Computer Modern", size: 12pt, lang: "fr", region: "fr")
-  /* for English: lang: 'en' and region: 'us'
-  For other languages/regions, refer to this page:
-  lang: https://en.wikipedia.org/wiki/ISO_639
-  region: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 */
+  // for English: lang: 'en' and region: 'us'
+  // For other languages/regions, refer to this page:
+  // lang: https://en.wikipedia.org/wiki/ISO_639
+  // region: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+
+  // Display links in blue.
+  show link: set text(fill: blue.darken(40%))
 
   show heading: set text(hyphenate: false)
 
@@ -68,15 +71,13 @@
     text(fill: luma(150), str(it.number)) + h(2em) + it.body
   } else { it }
 
-  // Display links in blue
-  show link: set text(fill: blue.darken(40%))
-
   set par(justify: true)
 
   // Page configuration
   set page(
     margin: (top: 80pt),
     header-ascent: 10pt,
+
     header: context [
       #stack(
         dir: ltr,

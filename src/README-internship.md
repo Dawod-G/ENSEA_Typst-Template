@@ -35,7 +35,7 @@ typst init volt-internship-ensea
 ```typst
 #import "@preview/volt-internship-ensea:0.1.0": *
 
-#show: lab-internship.with(
+#show: internship.with(
   companyLogo: "template/media/logo.png",
   authors: (
     "Jean DUPONT",

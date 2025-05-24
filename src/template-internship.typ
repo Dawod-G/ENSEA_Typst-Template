@@ -1,4 +1,4 @@
-// edited on 21/05/2025
+// edited on 24/05/2025
 
 #import "@preview/glossy:0.8.0": *
 #import "@preview/hydra:0.6.1": anchor, hydra
@@ -7,7 +7,7 @@
 // CONFIGURATION
 // ============================
 
-#let lab-internship(
+#let internship(
   // Mandatory variable
   companyLogo: none,
   authors: none,
@@ -76,7 +76,7 @@
   // Config. of the spacing after headings
   show heading.where(level: 1): set block(spacing: 1em)
 
-  set list(indent: 15pt, marker: [--]) // config. of lists
+  set list(indent: 15pt, marker: [--])
 
   set math.equation(numbering: "(1)")
 
@@ -192,6 +192,7 @@
     margin: (top: 80pt, bottom: 1.5cm),
     header-ascent: 10pt,
     footer-descent: 10pt,
+
     header: context [
       // to use #hydra outside of the page header, an #anchor must be placed
       #anchor(),
@@ -201,18 +202,14 @@
 
         align(left + horizon, image("assets/logo-ENSEA.jpg", height: 14mm)),
 
-
         align(center + horizon)[
           #text(size: 10pt)[
             #box(width: 75%)[
               #title
             ]]
         ],
-
-
         align(right + horizon, image(companyLogo, height: 14mm)),
       )
-
       #box(width: 100%, height: 1pt, fill: black)
     ],
 

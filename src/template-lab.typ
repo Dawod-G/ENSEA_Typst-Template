@@ -1,10 +1,10 @@
-// edited on 21/05/2025
+// edited on 24/05/2025
 
 // ============================
 // CONFIGURATION
 // ============================
 
-#let lab-report(
+#let report(
   title: none,
   authors: none,
   studentInfo: none,
@@ -44,10 +44,13 @@
   set pagebreak(weak: true)
 
   set text(font: "New Computer Modern", size: 12pt, lang: "fr", region: "fr")
-  /* for English: lang: 'en' and region: 'us'
-  For other languages/regions, refer to this page:
-  lang: https://en.wikipedia.org/wiki/ISO_639
-  region: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2 */
+  // for English: lang: 'en' and region: 'us'
+  // For other languages/regions, refer to this page:
+  // lang: https://en.wikipedia.org/wiki/ISO_639
+  // region: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+
+  // Display links in blue.
+  show link: set text(fill: blue.darken(40%))
 
   set heading(numbering: "I.1.a.")
   show heading: set text(hyphenate: false)
@@ -55,7 +58,7 @@
   // Config. of the spacing after headings
   show heading.where(level: 1): set block(spacing: 1em)
 
-  set list(indent: 15pt, marker: [--]) // config. of lists
+  set list(indent: 15pt, marker: [--])
 
   set math.equation(numbering: "(1)")
 
@@ -85,9 +88,6 @@
   show raw.line: it => if it.count > 1 {
     text(fill: luma(150), str(it.number)) + h(2em) + it.body
   } else { it }
-
-  // Display links in blue
-  show link: set text(fill: blue.darken(40%))
 
   // First page configuration
   align(center + horizon)[

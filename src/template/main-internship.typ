@@ -7,7 +7,7 @@
 // VARIABLES TO MODIFY
 // ============================
 
-#show: lab-internship.with(
+#show: internship.with(
   // Path to the company logo
   companyLogo: "template/media/logo.png",
 

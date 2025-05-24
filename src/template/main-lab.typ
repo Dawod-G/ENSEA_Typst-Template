@@ -1,10 +1,10 @@
-#import "../template-lab.typ": lab-report
+#import "../template-lab.typ": report
 
 // ============================
 // VARIABLES TO MODIFY
 // ============================
 
-#show: lab-report.with(
+#show: report.with(
   // Title of the lab report
   title: [#lorem(10)],
 
