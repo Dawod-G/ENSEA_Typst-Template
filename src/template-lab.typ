@@ -60,7 +60,7 @@
   show heading.where(level: 1): set block(spacing: 1.5em)
   show heading.where(level: 2): set block(spacing: 1em)
   show heading.where(level: 3): set block(spacing: 0.75em)
-  
+
   set list(indent: 15pt, marker: [--])
 
   set math.equation(numbering: "(1)")

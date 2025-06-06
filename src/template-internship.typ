@@ -25,23 +25,33 @@
 ) = {
   // Check if all mandatory variables are defined.
   if companyLogo == none {
-    panic("The `companyLogo` variable must be defined. It should be a string representing the path to the company logo.")
+    panic(
+      "The `companyLogo` variable must be defined. It should be a string representing the path to the company logo.",
+    )
   }
 
   if authors == none {
-    panic("The `authors` variable must be defined. It should be a list of strings representing the authors of the report.")
+    panic(
+      "The `authors` variable must be defined. It should be a list of strings representing the authors of the report.",
+    )
   }
 
   if studentInfo == none {
-    panic("The `studentInfo` variable must be defined. It should be a string with the student's information.")
+    panic(
+      "The `studentInfo` variable must be defined. It should be a string with the student's information.",
+    )
   }
 
   if title == none {
-    panic("The `title` variable must be defined. It should be a string representing the title of the report.")
+    panic(
+      "The `title` variable must be defined. It should be a string representing the title of the report.",
+    )
   }
 
   if internshipDetails == none {
-    panic("The `internshipDetails` variable must be defined. It should be a string describing the details of the internship.")
+    panic(
+      "The `internshipDetails` variable must be defined. It should be a string describing the details of the internship.",
+    )
   }
 
   set document(author: authors, title: title)
@@ -109,23 +119,21 @@
     content
   }
 
-  set figure(
-    numbering: n => {
-      let appx = state("backmatter", false).get()
-      let hdr = counter(heading).get()
-      let format = if appx {
-        "A.1"
-      } else {
-        "1.1"
-      }
-      let h = if appx {
-        hdr.at(0)
-      } else {
-        hdr.first()
-      }
-      numbering(format, h, n)
-    },
-  )
+  set figure(numbering: n => {
+    let appx = state("backmatter", false).get()
+    let hdr = counter(heading).get()
+    let format = if appx {
+      "A.1"
+    } else {
+      "1.1"
+    }
+    let h = if appx {
+      hdr.at(0)
+    } else {
+      hdr.first()
+    }
+    numbering(format, h, n)
+  })
 
   // Reset figure and table counters to 0 at each level-1 heading
   show heading.where(level: 1): hdr => {
@@ -138,13 +146,11 @@
   align(center + horizon)[
     #block(text(weight: 700, size: 22pt, [*ENSEA*]))
 
-    #block(
-      text(
-        weight: 700,
-        size: 16pt,
-        [*École Nationale Supérieure de l'Électronique et de ses Applications*],
-      ),
-    )
+    #block(text(
+      weight: 700,
+      size: 16pt,
+      [*École Nationale Supérieure de l'Électronique et de ses Applications*],
+    ))
 
     #block(
       text(
@@ -169,15 +175,9 @@
     #block(text(weight: 700, size: 22pt, [RAPPORT DE STAGE]))
 
     #linebreak()
-    #block(
-      text(
-        weight: 700,
-        size: 16pt,
-        [#(
-            authors.map(strong).join(", ", last: " et ")
-          )],
-      ),
-    )
+    #block(text(weight: 700, size: 16pt, [#(
+        authors.map(strong).join(", ", last: " et ")
+      )]))
 
     #block(text(weight: 400, size: 14pt, studentInfo))
 
@@ -266,11 +266,9 @@
 
   // From the Typst forum:
   // https://forum.typst.app/t/how-can-i-switch-from-roman-to-arabic-page-numbers-without-breaking-the-total-page-count/4130
-  set page(
-    numbering: (..n) => context {
-      numbering("i/i", n.at(0), ..counter(page).at(<last-roman-page>))
-    },
-  )
+  set page(numbering: (..n) => context {
+    numbering("i/i", n.at(0), ..counter(page).at(<last-roman-page>))
+  })
 
   // Acknowledgements configuration
   counter(page).update(1)
@@ -307,11 +305,9 @@
       outline(
         indent: 1em,
         // depth: 2,
-        target: selector.or(
-          ..query(qrytarget)
-            .filter(it => it.supplement != [showAppendices])
-            .map(it => it.func().where(supplement: it.supplement)),
-        ),
+        target: selector.or(..query(qrytarget)
+          .filter(it => it.supplement != [showAppendices])
+          .map(it => it.func().where(supplement: it.supplement))),
       )
     }
   }
@@ -408,14 +404,11 @@
       }
 
       // Create the complete entry with hanging indent
-      block(
-        spacing: 0.5em,
-        pad(
-          left: 1em,
-          bottom: 0.5em,
-          block([#term#entry.label#long-form#description]),
-        ),
-      )
+      block(spacing: 0.5em, pad(
+        left: 1em,
+        bottom: 0.5em,
+        block([#term#entry.label#long-form#description]),
+      ))
     },
   )
 
