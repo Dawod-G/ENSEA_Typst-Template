@@ -1,4 +1,4 @@
-// edited on 24/05/2025
+// edited on 07/06/2025
 
 #import "@preview/glossy:0.8.0": *
 #import "@preview/hydra:0.6.1": anchor, hydra
@@ -25,33 +25,23 @@
 ) = {
   // Check if all mandatory variables are defined.
   if companyLogo == none {
-    panic(
-      "The `companyLogo` variable must be defined. It should be a string representing the path to the company logo.",
-    )
+    panic("The `companyLogo` variable must be defined. It should be a string representing the path to the company logo.")
   }
 
   if authors == none {
-    panic(
-      "The `authors` variable must be defined. It should be a list of strings representing the authors of the report.",
-    )
+    panic("The `authors` variable must be defined. It should be a list of strings representing the authors of the report.")
   }
 
   if studentInfo == none {
-    panic(
-      "The `studentInfo` variable must be defined. It should be a string with the student's information.",
-    )
+    panic("The `studentInfo` variable must be defined. It should be a string with the student's information.")
   }
 
   if title == none {
-    panic(
-      "The `title` variable must be defined. It should be a string representing the title of the report.",
-    )
+    panic("The `title` variable must be defined. It should be a string representing the title of the report.")
   }
 
   if internshipDetails == none {
-    panic(
-      "The `internshipDetails` variable must be defined. It should be a string describing the details of the internship.",
-    )
+    panic("The `internshipDetails` variable must be defined. It should be a string describing the details of the internship.")
   }
 
   set document(author: authors, title: title)
@@ -72,9 +62,12 @@
 
   set heading(numbering: "I.1.a.")
   show heading: set text(hyphenate: false)
+  show heading: set par(justify: false)
 
   // Config. of the spacing after headings
-  show heading.where(level: 1): set block(spacing: 1em)
+  show heading.where(level: 1): set block(spacing: 1.5em)
+  show heading.where(level: 2): set block(spacing: 1em)
+  show heading.where(level: 3): set block(spacing: 0.75em)
 
   set list(indent: 15pt, marker: [--])
 
@@ -116,21 +109,23 @@
     content
   }
 
-  set figure(numbering: n => {
-    let appx = state("backmatter", false).get()
-    let hdr = counter(heading).get()
-    let format = if appx {
-      "A.1"
-    } else {
-      "1.1"
-    }
-    let h = if appx {
-      hdr.at(0)
-    } else {
-      hdr.first()
-    }
-    numbering(format, h, n)
-  })
+  set figure(
+    numbering: n => {
+      let appx = state("backmatter", false).get()
+      let hdr = counter(heading).get()
+      let format = if appx {
+        "A.1"
+      } else {
+        "1.1"
+      }
+      let h = if appx {
+        hdr.at(0)
+      } else {
+        hdr.first()
+      }
+      numbering(format, h, n)
+    },
+  )
 
   // Reset figure and table counters to 0 at each level-1 heading
   show heading.where(level: 1): hdr => {
@@ -143,11 +138,13 @@
   align(center + horizon)[
     #block(text(weight: 700, size: 22pt, [*ENSEA*]))
 
-    #block(text(
-      weight: 700,
-      size: 16pt,
-      [*École Nationale Supérieure de l'Électronique et de ses Applications*],
-    ))
+    #block(
+      text(
+        weight: 700,
+        size: 16pt,
+        [*École Nationale Supérieure de l'Électronique et de ses Applications*],
+      ),
+    )
 
     #block(
       text(
@@ -172,9 +169,15 @@
     #block(text(weight: 700, size: 22pt, [RAPPORT DE STAGE]))
 
     #linebreak()
-    #block(text(weight: 700, size: 16pt, [#(
-        authors.map(strong).join(", ", last: " et ")
-      )]))
+    #block(
+      text(
+        weight: 700,
+        size: 16pt,
+        [#(
+            authors.map(strong).join(", ", last: " et ")
+          )],
+      ),
+    )
 
     #block(text(weight: 400, size: 14pt, studentInfo))
 
@@ -214,7 +217,7 @@
     ],
 
     footer: context [
-      #place(top + left, dy: -10pt, box(width: 100%, height: 1pt, fill: black))
+      #place(top + left, dy: -5pt, box(width: 100%, height: 1pt, fill: black))
 
       // IS NOT alternateFooter
       // margin: (bottom: 2.5cm),
@@ -263,9 +266,11 @@
 
   // From the Typst forum:
   // https://forum.typst.app/t/how-can-i-switch-from-roman-to-arabic-page-numbers-without-breaking-the-total-page-count/4130
-  set page(numbering: (..n) => context {
-    numbering("i/i", n.at(0), ..counter(page).at(<last-roman-page>))
-  })
+  set page(
+    numbering: (..n) => context {
+      numbering("i/i", n.at(0), ..counter(page).at(<last-roman-page>))
+    },
+  )
 
   // Acknowledgements configuration
   counter(page).update(1)
@@ -279,8 +284,14 @@
     // make level 1 headings bold
     level: 1,
   ): it => {
-    v(12pt, weak: true)
-    strong(it)
+    // only apply to entries that are not for figures or tables
+    if it.element.func() == heading {
+      v(12pt, weak: true)
+      strong(it)
+    } else {
+      v(12pt, weak: true)
+      it
+    }
   }
 
   if not (enableListOfAppendices) {
@@ -296,9 +307,11 @@
       outline(
         indent: 1em,
         // depth: 2,
-        target: selector.or(..query(qrytarget)
-          .filter(it => it.supplement != [showAppendices])
-          .map(it => it.func().where(supplement: it.supplement))),
+        target: selector.or(
+          ..query(qrytarget)
+            .filter(it => it.supplement != [showAppendices])
+            .map(it => it.func().where(supplement: it.supplement)),
+        ),
       )
     }
   }
@@ -336,6 +349,14 @@
   set page(numbering: "1/1")
 
   body
+
+  // Appendices configuration
+  if (enableAppendices) {
+    pagebreak()
+    show: backmatter // to change numbering style in Appendix
+    import "template/appendices.typ": annexes
+    annexes()
+  }
 
   // Glossary configuration
   let my-theme = (
@@ -387,11 +408,14 @@
       }
 
       // Create the complete entry with hanging indent
-      block(spacing: 0.5em, pad(
-        left: 1em,
-        bottom: 0.5em,
-        block([#term#entry.label#long-form#description]),
-      ))
+      block(
+        spacing: 0.5em,
+        pad(
+          left: 1em,
+          bottom: 0.5em,
+          block([#term#entry.label#long-form#description]),
+        ),
+      )
     },
   )
 
@@ -411,13 +435,5 @@
     set par(justify: false)
     show bibliography: set heading(numbering: "I.1.a.")
     bibliography("template/references.bib")
-  }
-
-  // Appendices configuration
-  if (enableAppendices) {
-    pagebreak()
-    show: backmatter // to change numbering style in Appendix
-    import "template/appendices.typ": annexes
-    annexes()
   }
 }

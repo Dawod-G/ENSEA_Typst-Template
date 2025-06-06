@@ -1,4 +1,4 @@
-// edited on 24/05/2025
+// edited on 07/06/2025
 
 // ============================
 // CONFIGURATION
@@ -38,9 +38,12 @@
   show link: set text(fill: blue.darken(40%))
 
   show heading: set text(hyphenate: false)
+  show heading: set par(justify: false)
 
   // Config. of the spacing after headings
-  show heading.where(level: 1): set block(spacing: 1em)
+  show heading.where(level: 1): set block(spacing: 1.5em)
+  show heading.where(level: 2): set block(spacing: 1em)
+  show heading.where(level: 3): set block(spacing: 0.75em)
 
   set list(indent: 15pt, marker: [--])
 
