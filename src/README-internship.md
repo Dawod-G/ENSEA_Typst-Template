@@ -25,6 +25,7 @@ typst init volt-internship-ensea
 | `enableListOfFigures`    | `true`         | Enable the list of figures             | ❌         |
 | `enableListOfTables`     | `false`        | Enable the list of tables              | ❌         |
 | `enableListOfAppendices` | `false`        | Enable the list of appendices          | ❌         |
+| `enableGlossary`         | `false`        | Enable the glossary                    | ❌         |
 | `enableBibliography`     | `true`         | Enable the bibliography                | ❌         |
 | `enableAppendices`       | `true`         | Enable the appendix section            | ❌         |
 

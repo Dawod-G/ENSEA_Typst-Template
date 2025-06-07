@@ -49,7 +49,7 @@
   // lang: https://en.wikipedia.org/wiki/ISO_639
   // region: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 
-  // Display links in blue.
+  // Display links in blue
   show link: set text(fill: blue.darken(40%))
 
   set heading(numbering: "I.1.a.")
