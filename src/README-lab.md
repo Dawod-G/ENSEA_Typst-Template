@@ -24,7 +24,6 @@ typst init volt-lab-ensea
 
 All fields listed above are **mandatory**.
 
-
 ## Example
 
 ```typst

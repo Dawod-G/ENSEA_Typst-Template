@@ -328,13 +328,13 @@
   }
 
   if (enableListOfAppendices) and (enableAppendices) {
-    pagebreak()
-    heading(numbering: none)[Liste des annexes]
-    outline(
-      indent: 1em,
-      title: none,
-      target: heading.where(supplement: [showAppendices]),
-    )
+    // pagebreak()
+    // heading(numbering: none)[Liste des annexes]
+    // outline(
+    //   indent: 1em,
+    //   title: none,
+    //   target: heading.where(supplement: [showAppendices]),
+    // )
   }
 
   // From the Typst forum:
@@ -348,10 +348,10 @@
 
   // Appendices configuration
   if (enableAppendices) {
-    pagebreak()
-    show: backmatter // to change numbering style in Appendix
-    import "template/appendices.typ": annexes
-    annexes()
+    // pagebreak()
+    // show: backmatter // to change numbering style in Appendix
+    // import "template/appendices.typ": annexes
+    // annexes()
   }
 
   // Glossary configuration
@@ -427,6 +427,6 @@
     pagebreak()
     set par(justify: false)
     show bibliography: set heading(numbering: "I.1.a.")
-    bibliography("template/references.bib")
+    bibliography("template/references.bib",full: true)
   }
 }
