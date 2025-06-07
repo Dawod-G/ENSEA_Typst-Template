@@ -12,7 +12,9 @@
 ) = {
   // Check if all mandatory variables are defined.
   if authors == none {
-    panic("The `authors` variable must be defined. It should be a list of strings representing the authors of the document.")
+    panic(
+      "The `authors` variable must be defined. It should be a list of strings representing the authors of the document.",
+    )
   }
 
   if position == none {
