@@ -1,6 +1,7 @@
 [package]
 name = "volt-internship-ensea"
 version = "0.1.0"
+compiler = "0.13.0"
 entrypoint = "template-internship.typ"
 authors = ["Dawod-G"]
 license = "MIT"
