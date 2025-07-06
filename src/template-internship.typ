@@ -72,6 +72,8 @@
   show heading.where(level: 2): set block(spacing: 1em)
   show heading.where(level: 3): set block(spacing: 0.75em)
 
+  let outline-spacing = 1em
+
   set list(indent: 15pt, marker: [--])
 
   set math.equation(numbering: "(1)")
