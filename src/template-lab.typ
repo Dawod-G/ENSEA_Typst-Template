@@ -1,4 +1,4 @@
-// edited on 07/06/2025
+// edited on 06/07/2025
 
 // ============================
 // CONFIGURATION
@@ -48,6 +48,9 @@
   show heading: set text(hyphenate: false)
   show heading: set par(justify: false)
 
+  show heading.where(level: 1): set text(fill: rgb("A6004C"))
+
+  // TEMP
   // Config. of the spacing after headings
   show heading.where(level: 1): set block(spacing: 1.5em)
   show heading.where(level: 2): set block(spacing: 1em)
@@ -137,9 +140,9 @@
   // Definition of the following pages with different margins
   set page(
     margin: (top: 80pt, bottom: 1.5cm),
+    numbering: "1/1",
     header-ascent: 10pt,
     footer-descent: 10pt,
-
     header: context [
       #stack(
         dir: ltr,
@@ -168,7 +171,7 @@
 
         align(right + top)[#text(size: 10pt)[
             #box(width: 8%)[
-              #counter(page).display("1/1", both: true)
+              #counter(page).display(both: true)
             ]
           ]],
       )

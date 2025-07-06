@@ -1,0 +1,34 @@
+https://keepachangelog.com/fr/1.1.0/
+https://semver.org/lang/fr/
+
+refaire thumbnail
+
+https://github.com/typst/packages/pull/2164/files
+GD
+TODO? Refaire les header/footer
+TODO Fix outline page numbers (for example I want "II" but it shows "II/III")
+
+Numeroter avant intro comment ? les annexes de meme ?
+
+Ou mettre le glossaire et la table des abréviations
+
+Faire une version anglaise à la fin
+
+Que fait Hydra si :
+- les outlines sont trop long ?
+- les remerciements sont trop long ?
+- etc.
+
+Pages à inclure :
+=> Résumé / Abstract
+Remerciements (ok)
+Liste des matières (ok)
+Liste des figutrd (ok)
+Liste des tableaux (ok)
+Liste des annexes (ok)
+Glossaire (ok)
+=> Table des abréviations
+Introduction (ok)
+Corps du rapport (ok)
+Bibliographie (ok)
+Annexes (ok)

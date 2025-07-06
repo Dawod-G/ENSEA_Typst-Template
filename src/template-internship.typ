@@ -1,4 +1,4 @@
-// edited on 07/06/2025
+// edited on 06/07/2025
 
 #import "@preview/glossy:0.8.0": *
 #import "@preview/hydra:0.6.1": anchor, hydra
@@ -25,33 +25,23 @@
 ) = {
   // Check if all mandatory variables are defined.
   if companyLogo == none {
-    panic(
-      "The `companyLogo` variable must be defined. It should be a string representing the path to the company logo.",
-    )
+    panic("The `companyLogo` variable must be defined. It should be a string representing the path to the company logo.")
   }
 
   if authors == none {
-    panic(
-      "The `authors` variable must be defined. It should be a list of strings representing the authors of the report.",
-    )
+    panic("The `authors` variable must be defined. It should be a list of strings representing the authors of the report.")
   }
 
   if studentInfo == none {
-    panic(
-      "The `studentInfo` variable must be defined. It should be a string with the student's information.",
-    )
+    panic("The `studentInfo` variable must be defined. It should be a string with the student's information.")
   }
 
   if title == none {
-    panic(
-      "The `title` variable must be defined. It should be a string representing the title of the report.",
-    )
+    panic("The `title` variable must be defined. It should be a string representing the title of the report.")
   }
 
   if internshipDetails == none {
-    panic(
-      "The `internshipDetails` variable must be defined. It should be a string describing the details of the internship.",
-    )
+    panic("The `internshipDetails` variable must be defined. It should be a string describing the details of the internship.")
   }
 
   set document(author: authors, title: title)
@@ -74,6 +64,9 @@
   show heading: set text(hyphenate: false)
   show heading: set par(justify: false)
 
+  show heading.where(level: 1): set text(fill: rgb("A6004C"))
+
+  // TEMP
   // Config. of the spacing after headings
   show heading.where(level: 1): set block(spacing: 1.5em)
   show heading.where(level: 2): set block(spacing: 1em)
@@ -119,21 +112,23 @@
     content
   }
 
-  set figure(numbering: n => {
-    let appx = state("backmatter", false).get()
-    let hdr = counter(heading).get()
-    let format = if appx {
-      "A.1"
-    } else {
-      "1.1"
-    }
-    let h = if appx {
-      hdr.at(0)
-    } else {
-      hdr.first()
-    }
-    numbering(format, h, n)
-  })
+  set figure(
+    numbering: n => {
+      let appx = state("backmatter", false).get()
+      let hdr = counter(heading).get()
+      let format = if appx {
+        "A.1"
+      } else {
+        "1.1"
+      }
+      let h = if appx {
+        hdr.at(0)
+      } else {
+        hdr.first()
+      }
+      numbering(format, h, n)
+    },
+  )
 
   // Reset figure and table counters to 0 at each level-1 heading
   show heading.where(level: 1): hdr => {
@@ -146,11 +141,13 @@
   align(center + horizon)[
     #block(text(weight: 700, size: 22pt, [*ENSEA*]))
 
-    #block(text(
-      weight: 700,
-      size: 16pt,
-      [*École Nationale Supérieure de l'Électronique et de ses Applications*],
-    ))
+    #block(
+      text(
+        weight: 700,
+        size: 16pt,
+        [*École Nationale Supérieure de l'Électronique et de ses Applications*],
+      ),
+    )
 
     #block(
       text(
@@ -172,12 +169,24 @@
     )
 
     #linebreak()
-    #block(text(weight: 700, size: 22pt, [RAPPORT DE STAGE]))
+    #block(
+      text(
+        weight: 700,
+        size: 22pt,
+        [RAPPORT DE STAGE],
+      ),
+    )
 
     #linebreak()
-    #block(text(weight: 700, size: 16pt, [#(
-        authors.map(strong).join(", ", last: " et ")
-      )]))
+    #block(
+      text(
+        weight: 700,
+        size: 16pt,
+        [#(
+            authors.map(strong).join(", ", last: " et ")
+          )],
+      ),
+    )
 
     #block(text(weight: 400, size: 14pt, studentInfo))
 
@@ -193,12 +202,12 @@
   // Definition of the following pages with different margins
   set page(
     margin: (top: 80pt, bottom: 1.5cm),
+    numbering: "1/1",
     header-ascent: 10pt,
     footer-descent: 10pt,
-
     header: context [
       // to use #hydra outside of the page header, an #anchor must be placed
-      #anchor(),
+      #anchor()
 
       #stack(
         dir: ltr,
@@ -211,8 +220,10 @@
               #title
             ]]
         ],
+
         align(right + horizon, image(companyLogo, height: 14mm)),
       )
+
       #box(width: 100%, height: 1pt, fill: black)
     ],
 
@@ -266,9 +277,11 @@
 
   // From the Typst forum:
   // https://forum.typst.app/t/how-can-i-switch-from-roman-to-arabic-page-numbers-without-breaking-the-total-page-count/4130
-  set page(numbering: (..n) => context {
-    numbering("i/i", n.at(0), ..counter(page).at(<last-roman-page>))
-  })
+  // set page(
+  //   numbering: (..n) => context {
+  //     numbering("i/i", n.at(0), ..counter(page).at(<last-roman-page>))
+  //   },
+  // )
 
   // Acknowledgements configuration
   counter(page).update(1)
@@ -291,9 +304,12 @@
       it
     }
   }
+  show outline.entry: set text(hyphenate: false)
+  show outline: set par(justify: false)
 
   if not (enableListOfAppendices) {
     outline(
+      title: [Table des matières #v(outline-spacing)],
       indent: 1em,
       // depth: 2,
     )
@@ -303,20 +319,23 @@
     context {
       let qrytarget = heading // ou figure, un label, un sélecteur, etc...
       outline(
+        title: [Table des matières #v(outline-spacing)],
         indent: 1em,
         // depth: 2,
-        target: selector.or(..query(qrytarget)
-          .filter(it => it.supplement != [showAppendices])
-          .map(it => it.func().where(supplement: it.supplement))),
+        target: selector.or(
+          ..query(qrytarget)
+            .filter(it => it.supplement != [showAppendices])
+            .map(it => it.func().where(supplement: it.supplement)),
+        ),
       )
     }
   }
-
 
   // Figure contents configuration
   if (enableListOfFigures) {
     pagebreak()
     heading(numbering: none)[Liste des figures]
+    v(outline-spacing)
     outline(indent: 1em, title: none, target: figure.where(kind: image))
   }
 
@@ -324,35 +343,29 @@
   if (enableListOfTables) {
     pagebreak()
     heading(numbering: none)[Liste des tableaux]
+    v(outline-spacing)
     outline(indent: 1em, title: none, target: figure.where(kind: table))
   }
 
   if (enableListOfAppendices) and (enableAppendices) {
-    // pagebreak()
-    // heading(numbering: none)[Liste des annexes]
-    // outline(
-    //   indent: 1em,
-    //   title: none,
-    //   target: heading.where(supplement: [showAppendices]),
-    // )
+    pagebreak()
+    heading(numbering: none)[Liste des annexes]
+    v(outline-spacing)
+    outline(
+      indent: 1em,
+      title: none,
+      target: heading.where(supplement: [showAppendices]),
+    )
   }
 
   // From the Typst forum:
   // https://forum.typst.app/t/how-can-i-switch-from-roman-to-arabic-page-numbers-without-breaking-the-total-page-count/4130
   [#metadata("last-roman-page") <last-roman-page>]
   pagebreak()
-  counter(page).update(1)
+  // counter(page).update(1)
   set page(numbering: "1/1")
 
   body
-
-  // Appendices configuration
-  if (enableAppendices) {
-    // pagebreak()
-    // show: backmatter // to change numbering style in Appendix
-    // import "template/appendices.typ": annexes
-    // annexes()
-  }
 
   // Glossary configuration
   let my-theme = (
@@ -404,11 +417,14 @@
       }
 
       // Create the complete entry with hanging indent
-      block(spacing: 0.5em, pad(
-        left: 1em,
-        bottom: 0.5em,
-        block([#term#entry.label#long-form#description]),
-      ))
+      block(
+        spacing: 0.5em,
+        pad(
+          left: 1em,
+          bottom: 0.5em,
+          block([#term#entry.label#long-form#description]),
+        ),
+      )
     },
   )
 
@@ -419,6 +435,7 @@
       theme: my-theme,
       sort: true,
       ignore-case: false,
+      // show-all: true,
     )
   }
 
@@ -427,6 +444,14 @@
     pagebreak()
     set par(justify: false)
     show bibliography: set heading(numbering: "I.1.a.")
-    bibliography("template/references.bib",full: true)
+    bibliography("template/references.bib", full: true)
+  }
+
+  // Appendices configuration
+  if (enableAppendices) {
+    pagebreak()
+    show: backmatter // to change numbering style in Appendix
+    import "template/appendices.typ": annexes
+    annexes()
   }
 }
