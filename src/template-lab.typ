@@ -13,19 +13,27 @@
 ) = {
   // Check if all mandatory variables are defined.
   if title == none {
-    panic("The `title` variable must be defined. It should be a string representing the title of the report.")
+    panic(
+      "The `title` variable must be defined. It should be a string representing the title of the report.",
+    )
   }
 
   if authors == none {
-    panic("The `authors` variable must be defined. It should be a list of strings representing the authors of the report.")
+    panic(
+      "The `authors` variable must be defined. It should be a list of strings representing the authors of the report.",
+    )
   }
 
   if studentInfo == none {
-    panic("The `studentInfo` variable must be defined. It should be a string with the student's information.")
+    panic(
+      "The `studentInfo` variable must be defined. It should be a string with the student's information.",
+    )
   }
 
   if labDescription == none {
-    panic("The `labDescription` variable must be defined. It should be a string describing the lab.")
+    panic(
+      "The `labDescription` variable must be defined. It should be a string describing the lab.",
+    )
   }
 
   set document(author: authors, title: title)
@@ -91,13 +99,11 @@
   align(center + horizon)[
     #block(text(weight: 700, size: 22pt, [*ENSEA*]))
 
-    #block(
-      text(
-        weight: 700,
-        size: 16pt,
-        [*École Nationale Supérieure de l'Électronique et de ses Applications*],
-      ),
-    )
+    #block(text(
+      weight: 700,
+      size: 16pt,
+      [*École Nationale Supérieure de l'Électronique et de ses Applications*],
+    ))
 
     #linebreak()
     #stack(
@@ -110,27 +116,23 @@
     #block(text(weight: 700, size: 22pt, title))
 
     #linebreak()
-    #block(
-      text(
-        weight: 700,
-        size: 16pt,
-        [#(
-            authors.map(strong).join(", ", last: " et ")
-          )],
-      ),
-    )
+    #block(text(
+      weight: 700,
+      size: 16pt,
+      [#(
+          authors.map(strong).join(", ", last: " et ")
+        )],
+    ))
 
     #block(text(weight: 400, size: 14pt, studentInfo))
 
     #align(left)[
       #linebreak()
-      #block(
-        text(
-          weight: 400,
-          size: 14pt,
-          [#underline[*Objectifs*] : #labDescription],
-        ),
-      )
+      #block(text(
+        weight: 400,
+        size: 14pt,
+        [#underline[*Objectifs*] : #labDescription],
+      ))
     ]
   ]
 
