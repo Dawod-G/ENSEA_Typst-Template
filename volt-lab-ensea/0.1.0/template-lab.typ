@@ -11,7 +11,9 @@
 ) = {
   // Check if all mandatory variables are defined.
   if title == none {
-    panic("The `title` variable must be defined. It should be a string representing the title of the report.")
+    panic(
+      "The `title` variable must be defined. It should be a string representing the title of the report.",
+    )
   }
 
   if authors == none {
@@ -21,11 +23,15 @@
   }
 
   if studentInfo == none {
-    panic("The `studentInfo` variable must be defined. It should be a string with the student's information.")
+    panic(
+      "The `studentInfo` variable must be defined. It should be a string with the student's information.",
+    )
   }
 
   if labDescription == none {
-    panic("The `labDescription` variable must be defined. It should be a string describing the lab.")
+    panic(
+      "The `labDescription` variable must be defined. It should be a string describing the lab.",
+    )
   }
 
   set document(author: authors, title: title)

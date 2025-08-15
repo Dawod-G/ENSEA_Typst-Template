@@ -36,11 +36,15 @@
   }
 
   if studentInfo == none {
-    panic("The `studentInfo` variable must be defined. It should be a string with the student's information.")
+    panic(
+      "The `studentInfo` variable must be defined. It should be a string with the student's information.",
+    )
   }
 
   if title == none {
-    panic("The `title` variable must be defined. It should be a string representing the title of the report.")
+    panic(
+      "The `title` variable must be defined. It should be a string representing the title of the report.",
+    )
   }
 
   if internshipDetails == none {
