@@ -9,7 +9,8 @@ description = "Unofficial Typst template for internship reports at ENSEA, a Fren
 repository = "https://github.com/Dawod-G/ENSEA_Typst-Template"
 keywords = ["ensea", "school", "engineering", "report"]
 categories = ["report"]
-exclude = ["thumbnail-internship-1.png", "thumbnail-internship-2.png", "thumbnail-internship-3.png", "thumbnail-internship-4.png, "thumbnail-internship-5.png", "thumbnail-internship-6.png"]
+exclude = ["thumbnail-internship-1.png", "thumbnail-internship-2.png", "thumbnail-internship-3.png", "thumbnail-internship-4.png", "thumbnail-internship-5.png", "thumbnail-internship-6.png"]
+
 
 [template]
 path = "template"
