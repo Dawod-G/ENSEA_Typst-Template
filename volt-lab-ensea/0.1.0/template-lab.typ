@@ -24,8 +24,8 @@
     panic("The `student-info` variable must be defined. It should be a string with the student's information.")
   }
 
-  if labDescription == none {
-    panic("The `labDescription` variable must be defined. It should be a string describing the lab.")
+  if lab-description == none {
+    panic("The `lab-description` variable must be defined. It should be a string describing the lab.")
   }
 
   set document(author: authors, title: title)
@@ -130,7 +130,7 @@
         text(
           weight: 400,
           size: 12pt,
-          [#underline[*Objectifs*] : #labDescription],
+          [#underline[*Objectifs*] : #lab-description],
         ),
       )
     ]
