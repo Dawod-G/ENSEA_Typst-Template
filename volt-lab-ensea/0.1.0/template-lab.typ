@@ -11,7 +11,9 @@
 ) = {
   // Check if all mandatory variables are defined.
   if title == none {
-    panic("The `title` variable must be defined. It should be a string representing the title of the report.")
+    panic(
+      "The `title` variable must be defined. It should be a string representing the title of the report.",
+    )
   }
 
   if authors == none {
@@ -21,7 +23,9 @@
   }
 
   if student-info == none {
-    panic("The `student-info` variable must be defined. It should be a string with the student's information.")
+    panic(
+      "The `student-info` variable must be defined. It should be a string with the student's information.",
+    )
   }
 
   if lab-description == none {
