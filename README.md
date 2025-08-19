@@ -13,6 +13,7 @@ Custom templates for documents made at ENSEA.
 
 ## Lab template: for lab reports
 
+[Typst Universe](https://typst.app/universe/package/volt-lab-ensea) \
 [README](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-lab-ensea/0.1.0/README.md)
 
 <p align="center">
@@ -22,6 +23,7 @@ Custom templates for documents made at ENSEA.
 
 ## Internship template: for internship reports
 
+[Typst Universe](https://typst.app/universe/package/volt-internship-ensea) \
 [README](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-internship-ensea/0.1.0/README.md)
 
 <p align="center">
