@@ -17,7 +17,7 @@
   // ============================
 
   // Path to the company logo
-  company-logo: image("media\logo.png"),
+  company-logo: image("media/logo.png"),
 
   // Name(s) of the report author(s)
   authors: (
