@@ -1,0 +1,57 @@
+name: update-README-links
+
+on:
+  push:
+    paths:
+      - "volt-internship-ensea/**"
+      - "volt-lab-ensea/**"
+  workflow_dispatch:
+
+jobs:
+  update-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Get latest version for internship
+        id: internship
+        run: |
+          versions=$(ls volt-internship-ensea | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$')
+          latest=$(echo "$versions" | sort -V | tail -n 1)
+          echo "internship_latest=$latest" >> $GITHUB_OUTPUT
+
+      - name: Get latest version for lab
+        id: lab
+        run: |
+          versions=$(ls volt-lab-ensea | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$')
+          latest=$(echo "$versions" | sort -V | tail -n 1)
+          echo "lab_latest=$latest" >> $GITHUB_OUTPUT
+
+      - name: Update README.md with latest versions
+        run: |
+          internship_old=$(grep -oP 'volt-internship-ensea/\K[0-9]+\.[0-9]+\.[0-9]+' README.md | head -n 1)
+          lab_old=$(grep -oP 'volt-lab-ensea/\K[0-9]+\.[0-9]+\.[0-9]+' README.md | head -n 1)
+
+          internship_new="${{ steps.internship.outputs.internship_latest }}"
+          lab_new="${{ steps.lab.outputs.lab_latest }}"
+
+          echo "Old internship version: $internship_old"
+          echo "Old lab version: $lab_old"
+          echo "Updating internship version: $internship_old → $internship_new"
+          echo "Updating lab version: $lab_old → $lab_new"
+
+          sed -i "s/volt-internship-ensea\/$internship_old/volt-internship-ensea\/$internship_new/g" README.md
+          sed -i "s/volt-lab-ensea\/$lab_old/volt-lab-ensea\/$lab_new/g" README.md
+
+          sed -i "s/## Lab template: for lab reports.*/## Lab template: for lab reports (v$lab_new)/" README.md
+          sed -i "s/## Internship template: for internship reports.*/## Internship template: for internship reports (v$internship_new)/" README.md
+
+      - name: Commit and push changes
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add README.md
+          git diff --cached --quiet || git commit -m "Update README links to latest versions"
+          git push
