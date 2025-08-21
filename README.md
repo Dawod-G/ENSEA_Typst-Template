@@ -21,20 +21,20 @@ Custom templates for documents made at ENSEA.
   <img src="volt-lab-ensea/0.1.0/thumbnail-lab-2.png" width="250" />
 </p>
 
-## Internship template: for internship reports (v0.1.1)
+## Internship template: for internship reports (v0.1.2)
 
 [Typst Universe](https://typst.app/universe/package/volt-internship-ensea) \
-[README](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-internship-ensea/0.1.1/README.md)
+[README](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-internship-ensea/0.1.2/README.md)
 
 <p align="center">
-  <img src="volt-internship-ensea/0.1.1/thumbnail-internship-1.png" width="250" />
-  <img src="volt-internship-ensea/0.1.1/thumbnail-internship-2.png" width="250" />
+  <img src="volt-internship-ensea/0.1.2/thumbnail-internship-1.png" width="250" />
+  <img src="volt-internship-ensea/0.1.2/thumbnail-internship-2.png" width="250" />
   <br/>
-  <img src="volt-internship-ensea/0.1.1/thumbnail-internship-3.png" width="250" />
-  <img src="volt-internship-ensea/0.1.1/thumbnail-internship-4.png" width="250" />
+  <img src="volt-internship-ensea/0.1.2/thumbnail-internship-3.png" width="250" />
+  <img src="volt-internship-ensea/0.1.2/thumbnail-internship-4.png" width="250" />
   <br/>
-  <img src="volt-internship-ensea/0.1.1/thumbnail-internship-5.png" width="250" />
-  <img src="volt-internship-ensea/0.1.1/thumbnail-internship-6.png" width="250" />
+  <img src="volt-internship-ensea/0.1.2/thumbnail-internship-5.png" width="250" />
+  <img src="volt-internship-ensea/0.1.2/thumbnail-internship-6.png" width="250" />
 </p>
 
 ## Contributions
