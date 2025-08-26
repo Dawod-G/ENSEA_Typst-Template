@@ -17,23 +17,23 @@
   // ============================
 
   // Path to the company logo
-  company-logo: image("media/logo.png"),
+  COMPANY-LOGO: image("media/logo.png"),
 
   // Name(s) of the report author(s)
-  authors: (
+  AUTHORS: (
     "Jean DUPONT",
   ),
 
   // Information about the student(s)
-  student-info: [*Élève ingénieur en X#super[ème] année* #linebreak()
+  STUDENT-INFO: [*Élève ingénieur en X#super[ème] année* #linebreak()
     Promotion 20XX #linebreak()
     Année 20XX/20XX],
 
   // Title of the internship report
-  title: [#lorem(10)],
+  TITLE: [#lorem(10)],
 
   // Company name, location, duration, etc.
-  internship-details: [Stage effectué du *1er mars au 30 août 2025*, au sein de la société *TechSolutions*, située à Paris.
+  INTERNSHIP-DETAILS: [Stage effectué du *1er mars au 30 août 2025*, au sein de la société *TechSolutions*, située à Paris.
 
     Sous la responsabilité de : #linebreak()
     - M. *Pierre LEFEVRE*, Directeur de la Stratégie #linebreak()
@@ -41,19 +41,19 @@
   ],
 
   // Enable the list of figures
-  enable-list-figures: true,
+  ENABLE-LIST-FIGURES: true,
   // Enable the list of tables
-  enable-list-tables: true,
+  ENABLE-LIST-TABLES: true,
   // Enable the list of appendices
-  enable-list-appendices: true,
+  ENABLE-LIST-APPENDICES: true,
   // Enable the glossary section
-  enable-glossary: true,
+  ENABLE-GLOSSARY: true,
   // Enable the abstract section
-  enable-abstract: true,
+  ENABLE-ABSTRACT: true,
   // Enable the bibliography
-  enable-bibliography: true,
+  ENABLE-BIBLIOGRAPHY: true,
   // Enable the appendix section
-  enable-appendices: true,
+  ENABLE-APPENDICES: true,
 )
 
 // ============================

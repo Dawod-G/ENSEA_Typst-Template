@@ -1,29 +1,33 @@
 #import "@preview/glossy:0.8.0": *
 #import "@preview/hydra:0.6.2": anchor, hydra
 
-#let HEADING-LVL1-SPACING = 1.5em
-#let HEADING-LVL2-SPACING = 1.25em
-#let HEADING-LVL3-SPACING = 1em
+// Global variables
+#let HEADING-LVL-1-SPACING = 1.5em
+#let HEADING-LVL-2-SPACING = 1.25em
+#let HEADING-LVL-3-SPACING = 1em
+
+#let ROSE-ENSEA = rgb("A6004C")
 
 // ============================
 // CONFIGURATION
 // ============================
 
 #let internship(
-  // Mandatory variable
-  company-logo: none,
-  authors: none,
-  student-info: none,
-  title: none,
-  internship-details: none,
-  // Optional variable
-  enable-list-figures: true,
-  enable-list-tables: false,
-  enable-list-appendices: false,
-  enable-glossary: false,
-  enable-abstract: true,
-  enable-bibliography: true,
-  enable-appendices: true,
+  // Mandatory variables
+  COMPANY-LOGO: none,
+  AUTHORS: none,
+  STUDENT-INFO: none,
+  TITLE: none,
+  INTERNSHIP-DETAILS: none,
+  // Optional variables
+  ENABLE-LIST-FIGURES: true,
+  ENABLE-LIST-TABLES: false,
+  ENABLE-LIST-APPENDICES: false,
+  ENABLE-GLOSSARY: false,
+  ENABLE-ABSTRACT: true,
+  ENABLE-BIBLIOGRAPHY: true,
+  ENABLE-APPENDICES: true,
+  // File to import
   abstract: none,
   acknowledgements: none,
   appendices: none,
@@ -31,37 +35,37 @@
   body,
 ) = {
   // Check if all mandatory variables are defined.
-  if company-logo == none {
+  if COMPANY-LOGO == none {
     panic(
-      "The `company-logo` variable must be defined. It should be a string representing the path to the company logo.",
+      "The `COMPANY-LOGO` variable must be defined. It should be a string representing the path to the company logo.",
     )
   }
 
-  if authors == none {
+  if AUTHORS == none {
     panic(
-      "The `authors` variable must be defined. It should be a list of strings representing the authors of the report.",
+      "The `AUTHORS` variable must be defined. It should be a list of strings representing the authors of the report.",
     )
   }
 
-  if student-info == none {
+  if STUDENT-INFO == none {
     panic(
-      "The `student-info` variable must be defined. It should be a string with the student's information.",
+      "The `STUDENT-INFO` variable must be defined. It should be a string with the student's information.",
     )
   }
 
-  if title == none {
+  if TITLE == none {
     panic(
-      "The `title` variable must be defined. It should be a string representing the title of the report.",
+      "The `TITLE` variable must be defined. It should be a string representing the title of the report.",
     )
   }
 
-  if internship-details == none {
+  if INTERNSHIP-DETAILS == none {
     panic(
-      "The `internship-details` variable must be defined. It should be a string describing the details of the internship.",
+      "The `INTERNSHIP-DETAILS` variable must be defined. It should be a string describing the details of the internship.",
     )
   }
 
-  set document(author: authors, title: title)
+  set document(author: AUTHORS, title: TITLE)
 
   set page(paper: "a4", margin: auto, number-align: center)
 
@@ -81,15 +85,16 @@
   show heading: set text(hyphenate: false)
   show heading: set par(justify: false)
 
-  show heading.where(level: 1): set text(fill: rgb("A6004C"))
+  show heading.where(level: 1): set text(fill: ROSE-ENSEA)
 
   // Config. of the spacing after headings
-  show heading.where(level: 1): set block(below: HEADING-LVL1-SPACING)
-  show heading.where(level: 2): set block(below: HEADING-LVL2-SPACING)
-  show heading.where(level: 3): set block(below: HEADING-LVL3-SPACING)
+  show heading.where(level: 1): set block(below: HEADING-LVL-1-SPACING)
+  show heading.where(level: 2): set block(below: HEADING-LVL-2-SPACING)
+  show heading.where(level: 3): set block(below: HEADING-LVL-3-SPACING)
 
+  // Config. of the spacing after the outline
   show outline: it => {
-    show heading: it => it + v(HEADING-LVL1-SPACING, weak: true)
+    show heading: it => it + v(HEADING-LVL-1-SPACING, weak: true)
     it
   }
 
@@ -135,16 +140,16 @@
 
   // Adapted from the Typst forum:
   // https://forum.typst.app/t/how-to-change-numbering-in-appendix/1716/5
-  let backmatter(content) = {
+  let BACKMATTER(content) = {
     set heading(numbering: "A.1")
     counter(heading).update(0)
-    state("backmatter").update(true)
+    state("BACKMATTER").update(true)
     content
   }
 
   set figure(
     numbering: n => {
-      let appx = state("backmatter", false).get()
+      let appx = state("BACKMATTER", false).get()
       let hdr = counter(heading).get()
       let format = if appx {
         "A.1"
@@ -196,7 +201,7 @@
       dir: ltr, // left-to-right
       spacing: 5em, // space between contents
       image("assets/logo-ENSEA.png"),
-      company-logo,
+      COMPANY-LOGO,
     )
 
     #linebreak()
@@ -214,20 +219,20 @@
         weight: 700,
         size: 16pt,
         [#(
-          authors.map(strong).join(", ", last: " et ")
+          AUTHORS.map(strong).join(", ", last: " et ")
         )],
       ),
     )
 
-    #block(text(weight: 400, size: 14pt, student-info))
+    #block(text(weight: 400, size: 14pt, STUDENT-INFO))
 
     #linebreak()
-    #block(text(weight: 700, size: 20pt, title))
+    #block(text(weight: 700, size: 20pt, TITLE))
   ]
 
   linebreak()
   set par(justify: true)
-  block(text(weight: 400, size: 12pt, [#internship-details]))
+  block(text(weight: 400, size: 12pt, [#INTERNSHIP-DETAILS]))
 
   pagebreak()
   // Definition of the following pages with different margins
@@ -250,13 +255,13 @@
           #text(size: 8pt)[
             #box(width: 75%)[
               #(
-                authors.join(", ", last: " et ")
+                AUTHORS.join(", ", last: " et ")
               ) \
-              #title
+              #TITLE
             ]]
         ],
 
-        align(right + horizon, company-logo),
+        align(right + horizon, COMPANY-LOGO),
       )
 
       #box(width: 100%, height: 1pt, fill: black)
@@ -287,7 +292,7 @@
   // https://forum.typst.app/t/how-can-i-switch-from-roman-to-arabic-page-numbers-without-breaking-the-total-page-count/4130
   // set page(
   //   numbering: (..n) => context {
-  //     numbering("i/i", n.at(0), ..counter(page).at(<last-roman-page>))
+  //     numbering("i/i", n.at(0), ..counter(page).at(<LAST-ROMAN-PAGE>))
   //   },
   // )
 
@@ -315,7 +320,7 @@
   show outline.entry: set text(hyphenate: false)
   show outline: set par(justify: false)
 
-  if not (enable-list-appendices) {
+  if not (ENABLE-LIST-APPENDICES) {
     outline(
       title: [Table des matières],
       indent: 1em,
@@ -340,25 +345,25 @@
   }
 
   // Figure contents configuration
-  if (enable-list-figures) {
+  if (ENABLE-LIST-FIGURES) {
     pagebreak()
     heading(numbering: none)[Liste des figures]
-    v(HEADING-LVL1-SPACING - 0.5em)
+    v(HEADING-LVL-1-SPACING - 0.5em)
     outline(indent: 1em, title: none, target: figure.where(kind: image))
   }
 
   // Table contents configuration
-  if (enable-list-tables) {
+  if (ENABLE-LIST-TABLES) {
     pagebreak()
     heading(numbering: none)[Liste des tableaux]
-    v(HEADING-LVL1-SPACING - 0.5em)
+    v(HEADING-LVL-1-SPACING - 0.5em)
     outline(indent: 1em, title: none, target: figure.where(kind: table))
   }
 
-  if (enable-list-appendices) and (enable-appendices) {
+  if (ENABLE-LIST-APPENDICES) and (ENABLE-APPENDICES) {
     pagebreak()
     heading(numbering: none)[Liste des annexes]
-    v(HEADING-LVL1-SPACING - 0.5em)
+    v(HEADING-LVL-1-SPACING - 0.5em)
     outline(
       indent: 1em,
       title: none,
@@ -427,7 +432,7 @@
     },
   )
 
-  if (enable-glossary) {
+  if (ENABLE-GLOSSARY) {
     pagebreak()
     // From Reddit:
     // https://www.reddit.com/r/typst/comments/18exrv5/comment/kcrdfc3/
@@ -458,7 +463,7 @@
     )
   }
 
-  if (enable-abstract) {
+  if (ENABLE-ABSTRACT) {
     pagebreak()
     heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
     // import "template/abstract.typ": abstract
@@ -467,7 +472,7 @@
 
   // From the Typst forum:
   // https://forum.typst.app/t/how-can-i-switch-from-roman-to-arabic-page-numbers-without-breaking-the-total-page-count/4130
-  [#metadata("last-roman-page") <last-roman-page>]
+  [#metadata("LAST-ROMAN-PAGE") <LAST-ROMAN-PAGE>]
   pagebreak()
   // counter(page).update(1)
   set page(numbering: "1/1")
@@ -475,7 +480,7 @@
   body
 
   // Bibliography configuration
-  if (enable-bibliography) {
+  if (ENABLE-BIBLIOGRAPHY) {
     pagebreak()
     set par(justify: false)
     show bibliography: set heading(numbering: "I.1.a.")
@@ -484,9 +489,9 @@
   }
 
   // Appendices configuration
-  if (enable-appendices) {
+  if (ENABLE-APPENDICES) {
     pagebreak()
-    show: backmatter // to change numbering style in Appendix
+    show: BACKMATTER // to change numbering style in Appendix
     // import "template/appendices.typ": annexes
     appendices
   }
