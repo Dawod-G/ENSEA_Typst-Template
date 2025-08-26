@@ -5,27 +5,6 @@
 #let annexes() = {
   counter(heading).update(0)
 
-  // From Reddit:
-  // https://www.reddit.com/r/typst/comments/18exrv5/comment/kcrdfc3/
-  set heading(
-    numbering: (..nums) => {
-      // Get the position of the title in the hierarchy
-      let nums = nums.pos()
-
-      let level = nums.len() - 1
-
-      // Indentation could be calculated based on the level
-      // let indent = level * 1em
-
-      // Define the number to display based on the position in the hierarchy
-      let num = nums.last()
-
-      let style = ("1.", "A)", "1)").at(level)
-
-      numbering(style, num)
-    },
-  )
-
   // I hope no one will use the 'supplement' option for appendices ^_^
   show heading.where(level: 1): set heading(supplement: "showAppendices")
 
