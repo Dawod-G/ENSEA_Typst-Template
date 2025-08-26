@@ -11,7 +11,7 @@
       #underline()[*Mots clés*] : #lorem(5)],
   )
 
-  v(2em + 1em)
+  v(1.5em + 1.5em)
 
   block(
     fill: rgb("EEEEEE"),

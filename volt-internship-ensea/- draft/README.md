@@ -80,8 +80,12 @@ typst init @preview/volt-internship-ensea:0.1.2
 
 ## Changelog
 
-v0.1.2 : Fix import issue \
-v0.1.1 : Fix import issue \
+v- draft :
+- Fix groups in glossary  
+- Fix heading spacing
+
+v0.1.2 : Fix import issue  
+v0.1.1 : Fix import issue  
 v0.1.0 : Initial release
 
 ## Contributions

@@ -343,7 +343,7 @@
   if (enable-list-figures) {
     pagebreak()
     heading(numbering: none)[Liste des figures]
-
+    v(HEADING-LVL1-SPACING - 0.5em)
     outline(indent: 1em, title: none, target: figure.where(kind: image))
   }
 
@@ -351,14 +351,14 @@
   if (enable-list-tables) {
     pagebreak()
     heading(numbering: none)[Liste des tableaux]
-
+    v(HEADING-LVL1-SPACING - 0.5em)
     outline(indent: 1em, title: none, target: figure.where(kind: table))
   }
 
   if (enable-list-appendices) and (enable-appendices) {
     pagebreak()
     heading(numbering: none)[Liste des annexes]
-
+    v(HEADING-LVL1-SPACING - 0.5em)
     outline(
       indent: 1em,
       title: none,
@@ -417,7 +417,7 @@
 
       // Create the complete entry with hanging indent
       block(
-        spacing: 0.5em,
+        below: 0.5em,
         pad(
           left: 1em,
           bottom: 0.5em,
@@ -429,6 +429,26 @@
 
   if (enable-glossary) {
     pagebreak()
+    // From Reddit:
+    // https://www.reddit.com/r/typst/comments/18exrv5/comment/kcrdfc3/
+    set heading(
+      numbering: (..nums) => {
+        // Get the position of the title in the hierarchy
+        let nums = nums.pos()
+
+        let level = nums.len() - 1
+
+        // Indentation could be calculated based on the level
+        // let indent = level * 1em
+
+        // Define the number to display based on the position in the hierarchy
+        let num = nums.last()
+
+        let style = ("1.", "a)").at(level)
+
+        numbering(style, num)
+      },
+    )
     glossary(
       title: "Glossaire",
       theme: my-theme,
@@ -440,7 +460,7 @@
 
   if (enable-abstract) {
     pagebreak()
-    heading(outlined: false, numbering: none)[]
+    heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
     // import "template/abstract.typ": abstract
     abstract
   }
