@@ -1,10 +1,10 @@
 name: update-README-links
 
 on:
-  push:
-    paths:
-      - "volt-internship-ensea/**"
-      - "volt-lab-ensea/**"
+  # push:
+  #   paths:
+  #     - "volt-internship-ensea/**"
+  #     - "volt-lab-ensea/**"
   workflow_dispatch:
 
 jobs:
