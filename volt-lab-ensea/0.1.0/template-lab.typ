@@ -29,7 +29,9 @@
   }
 
   if lab-description == none {
-    panic("The `lab-description` variable must be defined. It should be a string describing the lab.")
+    panic(
+      "The `lab-description` variable must be defined. It should be a string describing the lab.",
+    )
   }
 
   set document(author: authors, title: title)

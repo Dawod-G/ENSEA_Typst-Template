@@ -38,7 +38,10 @@
 == Titre de niveau 2
 #lorem(50)
 
-#figure(image("../../template/media/logo-ENSEA.png", width: 25%), caption: [Logo de l'ENSEA])
+#figure(
+  image("../../template/media/logo-ENSEA.png", width: 25%),
+  caption: [Logo de l'ENSEA],
+)
 
 === Titre de niveau 3
 #lorem(35)

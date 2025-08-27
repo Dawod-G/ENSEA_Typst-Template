@@ -1,5 +1,8 @@
 #import "@preview/glossy:0.8.0": *
-#show: init-glossary.with(yaml("../../template/glossary.yaml"), term-links: true)
+#show: init-glossary.with(
+  yaml("../../template/glossary.yaml"),
+  term-links: true,
+)
 #import "../../template/abstract.typ": *
 #import "../../template/acknowledgements.typ": *
 #import "../../template/appendices.typ": *
@@ -65,7 +68,10 @@
 #lorem(70)
 
 == Une figure pour illustrer la "Liste des figures"
-#figure(image("../../template/media/logo-ENSEA.png", width: 25%), caption: [Logo de l'ENSEA])
+#figure(
+  image("../../template/media/logo-ENSEA.png", width: 25%),
+  caption: [Logo de l'ENSEA],
+)
 
 == Une tableau pour illustrer la "Liste des tableaux"
 #figure(

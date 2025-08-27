@@ -511,7 +511,9 @@
     pagebreak()
     heading(numbering: none)[Liste des annexes]
     v(HEADING-LVL-1-SPACING - 0.5em)
-    outline(indent: 1em, title: none, target: heading.where(supplement: [showAppendices]))
+    outline(indent: 1em, title: none, target: heading.where(
+      supplement: [showAppendices],
+    ))
   }
 
   if (ENABLE-GLOSSARY) {
