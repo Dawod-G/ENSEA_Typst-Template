@@ -81,6 +81,7 @@ typst init @preview/volt-internship-ensea:0.1.2
 ## Changelog
 
 v- draft :
+- Move the abstract just after the acknowledgements  
 - Fix groups in glossary  
 - Fix heading spacing
 

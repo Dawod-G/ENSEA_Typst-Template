@@ -448,6 +448,12 @@
   heading(numbering: none, outlined: false)[Remerciements]
   ACKNOWLEDGEMENTS
 
+  if (ENABLE-ABSTRACT) {
+    pagebreak()
+    heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
+    ABSTRACT
+  }
+
   pagebreak()
   // Contents configuration
   show outline.entry.where(
@@ -525,12 +531,6 @@
       ignore-case: false,
       // show-all: true,
     ))
-  }
-
-  if (ENABLE-ABSTRACT) {
-    pagebreak()
-    heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
-    ABSTRACT
   }
 
   // From the Typst forum:
