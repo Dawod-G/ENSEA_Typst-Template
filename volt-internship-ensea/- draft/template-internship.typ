@@ -9,7 +9,67 @@
 #let ROSE-ENSEA = rgb("A6004C")
 
 // ============================
-// CONFIGURATION
+// ABSTRACT CONFIGURATION
+// ============================
+
+#let abstract-config(language: none, doc) = {
+  if language == "FRENCH" {
+    block(
+      fill: none,
+      stroke: rgb("CCCCCC"),
+      inset: 8pt,
+      outset: 5pt,
+      radius: 10pt,
+      [#heading(numbering: none, outlined: false)[Résumé]
+        #doc],
+    )
+  } else if language == "ENGLISH" {
+    block(
+      fill: rgb("EEEEEE"),
+      stroke: none,
+      inset: 8pt,
+      outset: 5pt,
+      radius: 10pt,
+      [#heading(numbering: none, outlined: false)[Abstract]
+        #doc],
+    )
+  } else {
+    panic("Language must be either 'FRENCH' or 'ENGLISH'")
+  }
+}
+
+// ============================
+// APPENDIX CONFIGURATION
+// ============================
+
+#let appendices-config(doc) = {
+  counter(heading).update(0)
+
+  // I hope no one will use the 'supplement' option for appendices ^_^
+  show heading.where(level: 1): set heading(supplement: "showAppendices")
+
+  // From the Polytechnique Typst Template by remigerme:
+  // https://github.com/remigerme/typst-polytechnique
+  let appendix(body, title: "Annexe") = {
+    // From https://github.com/typst/typst/discussions/3630
+    set heading(
+      numbering: (..nums) => {
+        let vals = nums.pos()
+        let s = ""
+        if vals.len() == 1 {
+          s += title + " "
+        }
+        s += numbering("A.1.", ..vals)
+        s
+      },
+    )
+    doc
+  }
+  show: appendix
+}
+
+// ============================
+// MAIN CONFIGURATION
 // ============================
 
 #let internship(
@@ -28,10 +88,10 @@
   ENABLE-BIBLIOGRAPHY: true,
   ENABLE-APPENDICES: true,
   // File to import
-  abstract: none,
-  acknowledgements: none,
-  appendices: none,
-  references: none,
+  ABSTRACT: none,
+  ACKNOWLEDGEMENTS: none,
+  APPENDICES: none,
+  REFERENCES: none,
   body,
 ) = {
   // Check if all mandatory variables are defined.
@@ -300,7 +360,7 @@
   counter(page).update(1)
   heading(numbering: none, outlined: false)[Remerciements]
   // import "template/acknowledgements.typ": acknowledgements
-  acknowledgements
+  ACKNOWLEDGEMENTS
 
   pagebreak()
   // Contents configuration
@@ -467,7 +527,7 @@
     pagebreak()
     heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
     // import "template/abstract.typ": abstract
-    abstract
+    ABSTRACT
   }
 
   // From the Typst forum:
@@ -485,7 +545,7 @@
     set par(justify: false)
     show bibliography: set heading(numbering: "I.1.a.")
     // bibliography("template/references.bib", full: true)
-    references
+    REFERENCES
   }
 
   // Appendices configuration
@@ -493,6 +553,6 @@
     pagebreak()
     show: BACKMATTER // to change numbering style in Appendix
     // import "template/appendices.typ": annexes
-    appendices
+    appendices-config(APPENDICES)
   }
 }

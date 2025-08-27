@@ -1,37 +1,17 @@
-#let abstract() = {
-  block(
-    fill: none,
-    stroke: rgb("CCCCCC"),
-    inset: 8pt,
-    outset: 5pt,
-    radius: 10pt,
-    [#heading(numbering: none, outlined: false)[Résumé]
-      #lorem(70)
+#import "@preview/volt-internship-ensea:0.1.2": *
 
-      #underline()[*Mots clés*] : #lorem(5)],
-  )
+#let abstract() = {
+  abstract-config(language: "FRENCH")[
+    #lorem(70)
+
+    #underline()[*Mots clés*] : #lorem(5)
+  ]
 
   v(1.5em + 1.5em)
 
-  block(
-    fill: rgb("EEEEEE"),
-    stroke: none,
-    inset: 8pt,
-    outset: 5pt,
-    radius: 10pt,
-    [#heading(numbering: none, outlined: false)[Abstract]
-      #text(
-        fill: black,
-        lang: "en",
-        region: "us",
-        // for English: lang: 'en' and region: 'us'
-        // For other languages/regions, refer to this page:
-        // lang: https://en.wikipedia.org/wiki/ISO_639
-        // region: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-      )[
-        #lorem(70)
+  abstract-config(language: "ENGLISH")[
+    #lorem(70)
 
-        #underline()[*Keywords*]: #lorem(5)]],
-  )
+    #underline()[*Keywords*]: #lorem(5)
+  ]
 }
-

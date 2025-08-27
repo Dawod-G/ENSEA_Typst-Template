@@ -7,10 +7,10 @@
 #import "@preview/volt-internship-ensea:0.1.2": *
 
 #show: internship.with(
-  abstract: abstract(),
-  acknowledgements: acknowledgements(),
-  appendices: annexes(),
-  references: bibliography("../../template/references.bib", full: true),
+  ABSTRACT: abstract(),
+  ACKNOWLEDGEMENTS: acknowledgements(),
+  APPENDICES: annexes(),
+  REFERENCES: bibliography("../../template/references.bib", full: true),
 
   // ============================
   // VARIABLES TO MODIFY
