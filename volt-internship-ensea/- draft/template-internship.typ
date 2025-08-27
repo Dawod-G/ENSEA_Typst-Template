@@ -9,6 +9,93 @@
 #let ROSE-ENSEA = rgb("A6004C")
 
 // ============================
+// GLOSSARY CONFIGURATION
+// ============================
+
+#let my-glossary-theme = (
+  // Adapted from theme-basic:
+  // Renders the main glossary section as a single column
+  // Parameters:
+  //   title: The glossary section title
+  //   body: Content containing all groups and entries
+  section: (title, body) => {
+    heading(level: 1, title, numbering: none)
+    body
+  },
+  // Renders a group of related glossary terms
+  // Parameters:
+  //   name: Group name (empty string for ungrouped terms)
+  //   index: Zero-based group index
+  //   total: Total number of groups
+  //   body: Content containing the group's entries
+  group: (name, index, total, body) => {
+    if name != "" and total > 1 {
+      heading(level: 2, name)
+    }
+    body
+  },
+  // Renders a single glossary entry with term, definition, and page references
+  // Parameters:
+  //   entry: Dictionary containing term data:
+  //     - short: Short form of term
+  //     - long: Long form of term (optional)
+  //     - description: Term description (optional)
+  //     - label: Term's dictionary label
+  //     - pages: Linked page numbers where term appears
+  //   index: Zero-based entry index within group
+  //   total: Total entries in group
+  entry: (entry, index, total) => {
+    // Format the term parts
+    let term = text(weight: "bold", entry.short)
+    let long-form = if entry.long == none {
+      [ ]
+    } else {
+      [ (#entry.long) ]
+    }
+
+    // Format the description with proper spacing
+    let description = if entry.description == none {
+      []
+    } else {
+      [: #entry.description]
+    }
+
+    // Create the complete entry with hanging indent
+    block(
+      below: 0.5em,
+      pad(
+        left: 1em,
+        bottom: 0.5em,
+        block([#term#entry.label#long-form#description]),
+      ),
+    )
+  },
+)
+
+#let glossary-config(doc) = {
+  set heading(
+    numbering: (..nums) => {
+      // Get the position of the title in the hierarchy
+      let nums = nums.pos()
+
+      let level = nums.len() - 1
+
+      // Indentation could be calculated based on the level
+      // let indent = level * 1em
+
+      // Define the number to display based on the position in the hierarchy
+      let num = nums.last()
+
+      let style = ("I.", "1.", "a.").at(level)
+
+      numbering(style, num)
+    },
+  )
+  doc
+}
+
+
+// ============================
 // ABSTRACT CONFIGURATION
 // ============================
 
@@ -34,7 +121,7 @@
         #doc],
     )
   } else {
-    panic("Language must be either 'FRENCH' or 'ENGLISH'")
+    panic("Language must be either `FRENCH` or `ENGLISH`")
   }
 }
 
@@ -359,7 +446,6 @@
   // Acknowledgements configuration
   counter(page).update(1)
   heading(numbering: none, outlined: false)[Remerciements]
-  // import "template/acknowledgements.typ": acknowledgements
   ACKNOWLEDGEMENTS
 
   pagebreak()
@@ -420,122 +506,37 @@
     outline(indent: 1em, title: none, target: figure.where(kind: table))
   }
 
+  // Appendix contents configuration
   if (ENABLE-LIST-APPENDICES) and (ENABLE-APPENDICES) {
     pagebreak()
     heading(numbering: none)[Liste des annexes]
     v(HEADING-LVL-1-SPACING - 0.5em)
-    outline(
-      indent: 1em,
-      title: none,
-      target: heading.where(supplement: [showAppendices]),
-    )
+    outline(indent: 1em, title: none, target: heading.where(supplement: [showAppendices]))
   }
-
-  // Glossary configuration
-  let my-theme = (
-    // Adapted from theme-basic:
-    // Renders the main glossary section as a single column
-    // Parameters:
-    //   title: The glossary section title
-    //   body: Content containing all groups and entries
-    section: (title, body) => {
-      heading(level: 1, title, numbering: none)
-      body
-    },
-    // Renders a group of related glossary terms
-    // Parameters:
-    //   name: Group name (empty string for ungrouped terms)
-    //   index: Zero-based group index
-    //   total: Total number of groups
-    //   body: Content containing the group's entries
-    group: (name, index, total, body) => {
-      if name != "" and total > 1 {
-        heading(level: 2, name)
-      }
-      body
-    },
-    // Renders a single glossary entry with term, definition, and page references
-    // Parameters:
-    //   entry: Dictionary containing term data:
-    //     - short: Short form of term
-    //     - long: Long form of term (optional)
-    //     - description: Term description (optional)
-    //     - label: Term's dictionary label
-    //     - pages: Linked page numbers where term appears
-    //   index: Zero-based entry index within group
-    //   total: Total entries in group
-    entry: (entry, index, total) => {
-      // Format the term parts
-      let term = text(weight: "bold", entry.short)
-      let long-form = if entry.long == none {
-        [ ]
-      } else {
-        [ (#entry.long) ]
-      }
-
-      // Format the description with proper spacing
-      let description = if entry.description == none {
-        []
-      } else {
-        [: #entry.description]
-      }
-
-      // Create the complete entry with hanging indent
-      block(
-        below: 0.5em,
-        pad(
-          left: 1em,
-          bottom: 0.5em,
-          block([#term#entry.label#long-form#description]),
-        ),
-      )
-    },
-  )
 
   if (ENABLE-GLOSSARY) {
     pagebreak()
-    // From Reddit:
-    // https://www.reddit.com/r/typst/comments/18exrv5/comment/kcrdfc3/
-    set heading(
-      numbering: (..nums) => {
-        // Get the position of the title in the hierarchy
-        let nums = nums.pos()
-
-        let level = nums.len() - 1
-
-        // Indentation could be calculated based on the level
-        // let indent = level * 1em
-
-        // Define the number to display based on the position in the hierarchy
-        let num = nums.last()
-
-        let style = ("1.", "a)").at(level)
-
-        numbering(style, num)
-      },
-    )
-    glossary(
+    glossary-config(glossary(
       title: "Glossaire",
-      theme: my-theme,
+      theme: my-glossary-theme,
       sort: true,
       ignore-case: false,
       // show-all: true,
-    )
+    ))
   }
 
   if (ENABLE-ABSTRACT) {
     pagebreak()
     heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
-    // import "template/abstract.typ": abstract
     ABSTRACT
   }
 
   // From the Typst forum:
   // https://forum.typst.app/t/how-can-i-switch-from-roman-to-arabic-page-numbers-without-breaking-the-total-page-count/4130
-  [#metadata("LAST-ROMAN-PAGE") <LAST-ROMAN-PAGE>]
+  // [#metadata("LAST-ROMAN-PAGE") <LAST-ROMAN-PAGE>]
   pagebreak()
   // counter(page).update(1)
-  set page(numbering: "1/1")
+  // set page(numbering: "1/1")
 
   body
 
@@ -544,7 +545,6 @@
     pagebreak()
     set par(justify: false)
     show bibliography: set heading(numbering: "I.1.a.")
-    // bibliography("template/references.bib", full: true)
     REFERENCES
   }
 
@@ -552,7 +552,6 @@
   if (ENABLE-APPENDICES) {
     pagebreak()
     show: BACKMATTER // to change numbering style in Appendix
-    // import "template/appendices.typ": annexes
     appendices-config(APPENDICES)
   }
 }
