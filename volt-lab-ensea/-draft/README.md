@@ -54,6 +54,15 @@ All fields listed above are **mandatory**.
   <img src="thumbnail-lab-2.png" width="250" />
 </p>
 
+## Changelog
+
+v- draft :
+- Disable hyphenation and paragraph justification in outline  
+- Add bold to equation numbering and figure prefix  
+- Fix heading spacing
+
+v0.1.0 : Initial release
+
 ## Contributions
 
 If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request. 
