@@ -81,7 +81,8 @@ typst init @preview/volt-internship-ensea:0.1.2
 ## Changelog
 
 v- draft :
-- Added equation numbering based on chapter (e.g., 1.1, 1.2, 2.1)  
+- Add equation numbering based on chapter (e.g., 1.1, 1.2, 2.1)  
+- Add bold to equation numbering and figure captions  
 - Move the abstract just after the acknowledgements  
 - Fix groups in glossary  
 - Fix heading spacing

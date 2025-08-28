@@ -258,6 +258,10 @@
 
   show figure.where(kind: image): set figure(supplement: "Figure")
 
+  show figure.caption: it => context text(
+    [*#it.supplement #it.counter.display()* -- #it.body],
+  )
+
   // Configure the figure caption alignment:
   // if figure caption has more than one line,
   // it makes it left-aligned
@@ -324,7 +328,7 @@
       } else {
         hdr.first()
       }
-      numbering(format, h, n)
+      strong(numbering(format, h, n))
     },
   )
 

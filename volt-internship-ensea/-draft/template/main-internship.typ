@@ -99,6 +99,8 @@ Dans le traité "*Philosophiæ Naturalis Principia Mathematica*" @newton1833phil
 == Titre de niveau 2
 #lorem(50)
 
+#underline[Loi de Joule :] $ P =I^2 times R $
+
 === Titre de niveau 3
 #lorem(35)
 
