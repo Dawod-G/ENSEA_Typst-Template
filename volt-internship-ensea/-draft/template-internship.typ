@@ -214,7 +214,7 @@
 
   set document(author: AUTHORS, title: TITLE)
 
-  set page(paper: "a4", margin: auto, number-align: center)
+  set page(paper: "a4", margin: auto)
 
   // if "weak: true", the page break is skipped if the current page is already empty
   set pagebreak(weak: true)
