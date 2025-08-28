@@ -17,16 +17,16 @@ typst init @preview/volt-internship-ensea:0.1.2
 
 | Parameter                | Default Value  | Description                            | Mandatory  |
 |--------------------------|----------------|----------------------------------------|------------|
-| `COMPANY-LOGO`            | `none`         | Path to the company logo               | ✅         |
-| `AUTHORS`                | `none`         | Name(s) of the report author(s)        | ✅         |
-| `STUDENT-INFO`            | `none`         | Information about the student(s)       | ✅         |
-| `TITLE`                  | `none`         | Title of the internship report         | ✅         |
-| `INTERNSHIP-DETAILS`      | `none`         | Company name, location, duration, etc. | ✅         |
-| `ENABLE-LIST-FIGURES`    | `true`         | Enable the list of figures             | ❌         |
-| `ENABLE-LIST-TABLES`     | `false`        | Enable the list of tables              | ❌         |
-| `ENABLE-GLOSSARY`         | `false`        | Enable the glossary                    | ❌         |
-| `ENABLE-ABSTRACT`         | `true`         | Enable the abstract                    | ❌         |
-| `ENABLE-BIBLIOGRAPHY`     | `true`         | Enable the bibliography                | ❌         |
+| `company-logo`            | `none`         | Path to the company logo               | ✅         |
+| `authors`                | `none`         | Name(s) of the report author(s)        | ✅         |
+| `student-info`            | `none`         | Information about the student(s)       | ✅         |
+| `title`                  | `none`         | Title of the internship report         | ✅         |
+| `internship-details`      | `none`         | Company name, location, duration, etc. | ✅         |
+| `enable-list-figures`    | `true`         | Enable the list of figures             | ❌         |
+| `enable-list-tables`     | `false`        | Enable the list of tables              | ❌         |
+| `enable-glossary`         | `false`        | Enable the glossary                    | ❌         |
+| `enable-abstract`         | `true`         | Enable the abstract                    | ❌         |
+| `enable-bibliography`     | `true`         | Enable the bibliography                | ❌         |
 
 ## Example
 
@@ -41,26 +41,26 @@ typst init @preview/volt-internship-ensea:0.1.2
 
 #show: internship.with(
   ABSTRACT: abstract(),
-  ACKNOWLEDGEMENTS: acknowledgements(),
-  APPENDICES: annexes(),
-  REFERENCES: bibliography("references.bib", full: true),
+  acknowledgements: acknowledgements(),
+  appendices: annexes(),
+  references: bibliography("references.bib", full: true),
 
   COMPANY-LOGO: image("media/logo.png"),
-  AUTHORS: (
+  authors: (
     "Jean DUPONT",
   ),
-  STUDENT-INFO: [*Élève ingénieur en X#super[ème] année* #linebreak()
+  student-info: [*Élève ingénieur en X#super[ème] année* #linebreak()
     Promotion 20XX #linebreak()
     Année 20XX/20XX],
-  TITLE: [#lorem(10)],
-  INTERNSHIP-DETAILS: [Stage effectué du *1er mars au 30 août 2025*, au sein de la société *TechSolutions*, située à Paris.
+  title: [#lorem(10)],
+  internship-details: [Stage effectué du *1er mars au 30 août 2025*, au sein de la société *TechSolutions*, située à Paris.
 
     Sous la responsabilité de : #linebreak()
     - M. *Pierre LEFEVRE*, Directeur de la Stratégie #linebreak()
     - Mme *Marie DUBOIS*, Responsable des Opérations #linebreak()
   ],
-  ENABLE-LIST-FIGURES: false,
-  ENABLE-BIBLIOGRAPHY: false,
+  enable-list-figures: false,
+  enable-bibliography: false,
 )
 
 = Introduction

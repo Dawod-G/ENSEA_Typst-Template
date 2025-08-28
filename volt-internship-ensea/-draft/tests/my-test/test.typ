@@ -11,32 +11,32 @@
 
 #show: internship.with(
   ABSTRACT: abstract(),
-  ACKNOWLEDGEMENTS: acknowledgements(),
-  APPENDICES: annexes(),
-  REFERENCES: bibliography("../../template/references.bib", full: true),
+  acknowledgements: acknowledgements(),
+  appendices: annexes(),
+  references: bibliography("../../template/references.bib", full: true),
 
   // ============================
   // VARIABLES TO MODIFY
   // ============================
 
   // Path to the company logo
-  COMPANY-LOGO: image("../../template/media/logo.png"),
+  company-logo: image("../../template/media/logo.png"),
 
   // Name(s) of the report author(s)
-  AUTHORS: (
+  authors: (
     "Jean DUPONT",
   ),
 
   // Information about the student(s)
-  STUDENT-INFO: [*Élève ingénieur en X#super[ème] année* #linebreak()
+  student-info: [*Élève ingénieur en X#super[ème] année* #linebreak()
     Promotion 20XX #linebreak()
     Année 20XX/20XX],
 
   // Title of the internship report
-  TITLE: [#lorem(10)],
+  title: [#lorem(10)],
 
   // Company name, location, duration, etc.
-  INTERNSHIP-DETAILS: [Stage effectué du *1er mars au 30 août 2025*, au sein de la société *TechSolutions*, située à Paris.
+  internship-details: [Stage effectué du *1er mars au 30 août 2025*, au sein de la société *TechSolutions*, située à Paris.
 
     Sous la responsabilité de : #linebreak()
     - M. *Pierre LEFEVRE*, Directeur de la Stratégie #linebreak()
@@ -44,19 +44,19 @@
   ],
 
   // Enable the list of figures
-  ENABLE-LIST-FIGURES: true,
+  enable-list-figures: true,
   // Enable the list of tables
-  ENABLE-LIST-TABLES: true,
+  enable-list-tables: true,
   // Enable the list of appendices
-  ENABLE-LIST-APPENDICES: true,
+  enable-list-appendices: true,
   // Enable the glossary section
-  ENABLE-GLOSSARY: true,
+  enable-glossary: true,
   // Enable the abstract section
-  ENABLE-ABSTRACT: true,
+  enable-abstract: true,
   // Enable the bibliography
-  ENABLE-BIBLIOGRAPHY: true,
+  enable-bibliography: true,
   // Enable the appendix section
-  ENABLE-APPENDICES: true,
+  enable-appendices: true,
 )
 
 // ============================

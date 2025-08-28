@@ -8,36 +8,36 @@
 // ============================
 
 #let report(
-  TITLE: none,
-  AUTHORS: none,
-  STUDENT-INFO: none,
-  LAB-DESCRIPTION: none,
+  title: none,
+  authors: none,
+  student-info: none,
+  lab-description: none,
   body,
 ) = {
   // Check if all mandatory variables are defined.
-  if TITLE == none {
+  if title == none {
     panic(
-      "The `TITLE` variable must be defined. It should be a string representing the title of the report.",
+      "The `title` variable must be defined. It should be a string representing the title of the report.",
     )
   }
 
-  if AUTHORS == none {
+  if authors == none {
     panic(
-      "The `AUTHORS` variable must be defined. It should be a list of strings representing the authors of the report.",
+      "The `authors` variable must be defined. It should be a list of strings representing the authors of the report.",
     )
   }
 
-  if STUDENT-INFO == none {
+  if student-info == none {
     panic(
-      "The `STUDENT-INFO` variable must be defined. It should be a string with the student's information.",
+      "The `student-info` variable must be defined. It should be a string with the student's information.",
     )
   }
 
-  if LAB-DESCRIPTION == none {
-    panic("The `LAB-DESCRIPTION` variable must be defined. It should be a string describing the lab.")
+  if lab-description == none {
+    panic("The `lab-description` variable must be defined. It should be a string describing the lab.")
   }
 
-  set document(author: AUTHORS, title: TITLE)
+  set document(author: authors, title: title)
 
   set page(paper: "a4", margin: auto)
 
@@ -155,7 +155,7 @@
     )
 
     #linebreak()
-    #block(text(weight: 700, size: 22pt, TITLE))
+    #block(text(weight: 700, size: 22pt, title))
 
     #linebreak()
     #block(
@@ -163,12 +163,12 @@
         weight: 700,
         size: 16pt,
         [#(
-          AUTHORS.map(strong).join(", ", last: " et ")
+          authors.map(strong).join(", ", last: " et ")
         )],
       ),
     )
 
-    #block(text(weight: 400, size: 14pt, STUDENT-INFO))
+    #block(text(weight: 400, size: 14pt, student-info))
 
     #align(left)[
       #linebreak()
@@ -176,7 +176,7 @@
         text(
           weight: 400,
           size: 12pt,
-          [#underline[*Objectifs*] : #LAB-DESCRIPTION],
+          [#underline[*Objectifs*] : #lab-description],
         ),
       )
     ]
@@ -200,7 +200,7 @@
         align(right + bottom)[
           #text(size: 8pt)[
             #box(width: 88%)[
-              #TITLE
+              #title
             ]]
         ],
       )
@@ -214,7 +214,7 @@
 
         align(left + top)[#text(size: 8pt)[
           #box(width: 85%)[#(
-            AUTHORS.join(", ", last: " et ")
+            authors.join(", ", last: " et ")
           )]]],
 
         align(right + top)[#text(size: 8pt)[

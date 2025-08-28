@@ -6,21 +6,21 @@
 
 #show: report.with(
   // Title of the lab report
-  TITLE: [#lorem(10)],
+  title: [#lorem(10)],
 
   // Name(s) of the student(s) contributing to the report
-  AUTHORS: (
+  authors: (
     "Jean DUPONT",
     "Marie DUBOIS",
   ),
 
   // Information about the student(s)
-  STUDENT-INFO: [*Élève ingénieur en X#super[ème] année* #linebreak()
+  student-info: [*Élève ingénieur en X#super[ème] année* #linebreak()
     Promotion 20XX #linebreak()
     Année 20XX/20XX],
 
   // Description of the lab objectives
-  LAB-DESCRIPTION: [
+  lab-description: [
     - #lorem(15) #linebreak()
     - #lorem(15) #linebreak()
     - #lorem(15)

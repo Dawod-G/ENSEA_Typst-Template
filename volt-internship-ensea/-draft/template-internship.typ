@@ -161,58 +161,58 @@
 
 #let internship(
   // Mandatory variables
-  COMPANY-LOGO: none,
-  AUTHORS: none,
-  STUDENT-INFO: none,
-  TITLE: none,
-  INTERNSHIP-DETAILS: none,
+  company-logo: none,
+  authors: none,
+  student-info: none,
+  title: none,
+  internship-details: none,
   // Optional variables
-  ENABLE-LIST-FIGURES: true,
-  ENABLE-LIST-TABLES: false,
-  ENABLE-LIST-APPENDICES: false,
-  ENABLE-GLOSSARY: false,
-  ENABLE-ABSTRACT: true,
-  ENABLE-BIBLIOGRAPHY: true,
-  ENABLE-APPENDICES: true,
+  enable-list-figures: true,
+  enable-list-tables: false,
+  enable-list-appendices: false,
+  enable-glossary: false,
+  enable-abstract: true,
+  enable-bibliography: true,
+  enable-appendices: true,
   // File to import
   ABSTRACT: none,
-  ACKNOWLEDGEMENTS: none,
-  APPENDICES: none,
-  REFERENCES: none,
+  acknowledgements: none,
+  appendices: none,
+  references: none,
   body,
 ) = {
   // Check if all mandatory variables are defined.
-  if COMPANY-LOGO == none {
+  if company-logo == none {
     panic(
-      "The `COMPANY-LOGO` variable must be defined. It should be a string representing the path to the company logo.",
+      "The `company-logo` variable must be defined. It should be a string representing the path to the company logo.",
     )
   }
 
-  if AUTHORS == none {
+  if authors == none {
     panic(
-      "The `AUTHORS` variable must be defined. It should be a list of strings representing the authors of the report.",
+      "The `authors` variable must be defined. It should be a list of strings representing the authors of the report.",
     )
   }
 
-  if STUDENT-INFO == none {
+  if student-info == none {
     panic(
-      "The `STUDENT-INFO` variable must be defined. It should be a string with the student's information.",
+      "The `student-info` variable must be defined. It should be a string with the student's information.",
     )
   }
 
-  if TITLE == none {
+  if title == none {
     panic(
-      "The `TITLE` variable must be defined. It should be a string representing the title of the report.",
+      "The `title` variable must be defined. It should be a string representing the title of the report.",
     )
   }
 
-  if INTERNSHIP-DETAILS == none {
+  if internship-details == none {
     panic(
-      "The `INTERNSHIP-DETAILS` variable must be defined. It should be a string describing the details of the internship.",
+      "The `internship-details` variable must be defined. It should be a string describing the details of the internship.",
     )
   }
 
-  set document(author: AUTHORS, title: TITLE)
+  set document(author: authors, title: title)
 
   set page(paper: "a4", margin: auto)
 
@@ -375,7 +375,7 @@
       dir: ltr, // left-to-right
       spacing: 5em, // space between contents
       image("assets/logo-ENSEA.png"),
-      COMPANY-LOGO,
+      company-logo,
     )
 
     #linebreak()
@@ -393,20 +393,20 @@
         weight: 700,
         size: 16pt,
         [#(
-          AUTHORS.map(strong).join(", ", last: " et ")
+          authors.map(strong).join(", ", last: " et ")
         )],
       ),
     )
 
-    #block(text(weight: 400, size: 14pt, STUDENT-INFO))
+    #block(text(weight: 400, size: 14pt, student-info))
 
     #linebreak()
-    #block(text(weight: 700, size: 20pt, TITLE))
+    #block(text(weight: 700, size: 20pt, title))
   ]
 
   linebreak()
   set par(justify: true)
-  block(text(weight: 400, size: 12pt, [#INTERNSHIP-DETAILS]))
+  block(text(weight: 400, size: 12pt, [#internship-details]))
 
   pagebreak()
   // Definition of the following pages with different margins
@@ -429,13 +429,13 @@
           #text(size: 8pt)[
             #box(width: 75%)[
               #(
-                AUTHORS.join(", ", last: " et ")
+                authors.join(", ", last: " et ")
               ) \
-              #TITLE
+              #title
             ]]
         ],
 
-        align(right + horizon, COMPANY-LOGO),
+        align(right + horizon, company-logo),
       )
 
       #box(width: 100%, height: 1pt, fill: black)
@@ -473,9 +473,9 @@
   // Acknowledgements configuration
   counter(page).update(1)
   heading(numbering: none, outlined: false)[Remerciements]
-  ACKNOWLEDGEMENTS
+  acknowledgements
 
-  if (ENABLE-ABSTRACT) {
+  if (enable-abstract) {
     pagebreak()
     heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
     ABSTRACT
@@ -503,7 +503,7 @@
   show outline.entry: set text(hyphenate: false)
   show outline: set par(justify: false)
 
-  if not (ENABLE-LIST-APPENDICES) {
+  if not (enable-list-appendices) {
     outline(
       title: [Table des matières],
       indent: 1em,
@@ -528,7 +528,7 @@
   }
 
   // Figure contents configuration
-  if (ENABLE-LIST-FIGURES) {
+  if (enable-list-figures) {
     pagebreak()
     heading(numbering: none)[Liste des figures]
     v(HEADING-LVL-1-SPACING - 0.5em)
@@ -536,7 +536,7 @@
   }
 
   // Table contents configuration
-  if (ENABLE-LIST-TABLES) {
+  if (enable-list-tables) {
     pagebreak()
     heading(numbering: none)[Liste des tableaux]
     v(HEADING-LVL-1-SPACING - 0.5em)
@@ -544,7 +544,7 @@
   }
 
   // Appendix contents configuration
-  if (ENABLE-LIST-APPENDICES) and (ENABLE-APPENDICES) {
+  if (enable-list-appendices) and (enable-appendices) {
     pagebreak()
     heading(numbering: none)[Liste des annexes]
     v(HEADING-LVL-1-SPACING - 0.5em)
@@ -553,7 +553,7 @@
     ))
   }
 
-  if (ENABLE-GLOSSARY) {
+  if (enable-glossary) {
     pagebreak()
     glossary-config(glossary(
       title: "Glossaire",
@@ -574,17 +574,17 @@
   body
 
   // Bibliography configuration
-  if (ENABLE-BIBLIOGRAPHY) {
+  if (enable-bibliography) {
     pagebreak()
     set par(justify: false)
     show bibliography: set heading(numbering: "I.1.a.")
-    REFERENCES
+    references
   }
 
   // Appendices configuration
-  if (ENABLE-APPENDICES) {
+  if (enable-appendices) {
     pagebreak()
     show: BACKMATTER // to change numbering style in Appendix
-    appendices-config(APPENDICES)
+    appendices-config(appendices)
   }
 }

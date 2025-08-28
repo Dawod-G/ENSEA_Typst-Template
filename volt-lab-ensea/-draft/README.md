@@ -17,10 +17,10 @@ typst init @preview/volt-lab-ensea:0.1.0
 
 | Parameter       | Default Value | Description                                          |
 |-----------------|---------------|------------------------------------------------------|
-| `TITLE`         | `none`        | Title of the lab report                              |
-| `AUTHORS`       | `none`        | Name(s) of the student(s) contributing to the report |
-| `STUDENT-INFO`   | `none`        | Information about the student(s)                     |
-| `LAB-DESCRIPTION`| `none`        | Description of the lab objectives                    |
+| `title`         | `none`        | Title of the lab report                              |
+| `authors`       | `none`        | Name(s) of the student(s) contributing to the report |
+| `student-info`   | `none`        | Information about the student(s)                     |
+| `lab-description`| `none`        | Description of the lab objectives                    |
 
 All fields listed above are **mandatory**.
 
@@ -30,15 +30,15 @@ All fields listed above are **mandatory**.
 #import "@preview/volt-lab-ensea:0.1.0": *
 
 #show: report.with(
-  TITLE: [#lorem(10)],
-  AUTHORS: (
+  title: [#lorem(10)],
+  authors: (
     "Jean DUPONT",
     "Marie DUBOIS",
   ),
-  STUDENT-INFO: [*Élève ingénieur en X#super[ème] année* #linebreak()
+  student-info: [*Élève ingénieur en X#super[ème] année* #linebreak()
     Promotion 20XX #linebreak()
     Année 20XX/20XX],
-  LAB-DESCRIPTION: [
+  lab-description: [
     - #lorem(15) #linebreak()
     - #lorem(15) #linebreak()
     - #lorem(15)
