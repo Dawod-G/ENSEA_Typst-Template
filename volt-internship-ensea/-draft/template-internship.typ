@@ -256,8 +256,6 @@
 
   set list(indent: 15pt, marker: [--]) // config. of lists
 
-  set math.equation(numbering: "(1)")
-
   show figure.where(kind: image): set figure(supplement: "Figure")
 
   // Configure the figure caption alignment:
@@ -312,10 +310,29 @@
     },
   )
 
-  // Reset figure and table counters to 0 at each level-1 heading
+  set math.equation(
+    numbering: n => {
+      let appx = state("BACKMATTER", false).get()
+      let hdr = counter(heading).get()
+      let format = if appx {
+        "(A.1)"
+      } else {
+        "(1.1)"
+      }
+      let h = if appx {
+        hdr.at(0)
+      } else {
+        hdr.first()
+      }
+      numbering(format, h, n)
+    },
+  )
+
+  // Reset figure, table and equation counters to 0 at each level-1 heading
   show heading.where(level: 1): hdr => {
     counter(figure.where(kind: image)).update(0)
     counter(figure.where(kind: table)).update(0)
+    counter(math.equation).update(0)
     hdr
   }
 
