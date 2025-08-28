@@ -1,5 +1,10 @@
+// Global variables
+#let HEADING-LVL-1-SPACING = 1.5em
+#let HEADING-LVL-2-SPACING = 1.25em
+#let HEADING-LVL-3-SPACING = 1em
+
 // ============================
-// CONFIGURATION
+// MAIN CONFIGURATION
 // ============================
 
 #let report(
@@ -34,7 +39,7 @@
 
   set document(author: AUTHORS, title: TITLE)
 
-  set page(paper: "a4", margin: auto, number-align: center)
+  set page(paper: "a4", margin: auto)
 
   // if "weak: true", the page break is skipped if the current page is already empty
   set pagebreak(weak: true)
@@ -53,20 +58,39 @@
   show heading: set par(justify: false)
 
   // Config. of the spacing after headings
-  show heading.where(level: 1): set block(spacing: 1.5em)
-  show heading.where(level: 2): set block(spacing: 1.25em)
-  show heading.where(level: 3): set block(spacing: 1em)
+  show heading.where(level: 1): set block(below: HEADING-LVL-1-SPACING)
+  show heading.where(level: 2): set block(below: HEADING-LVL-2-SPACING)
+  show heading.where(level: 3): set block(below: HEADING-LVL-3-SPACING)
+
+  // Config. of the spacing after the outline
+  show outline: it => {
+    show heading: it => it + v(HEADING-LVL-1-SPACING, weak: true)
+    it
+  }
 
   show heading: it => [
     #underline()[#it]
   ]
 
   show underline: set underline(stroke: 1pt, offset: 2pt)
+
   set list(indent: 15pt, marker: [--]) // config. of lists
 
-  set math.equation(numbering: "(1)")
+  set math.equation(
+    numbering: n => { strong(numbering("(1)", n)) },
+  )
 
   show figure.where(kind: image): set figure(supplement: "Figure")
+
+  show figure.caption: it => if not (it.numbering == none) {
+    context text(
+      [*#it.supplement #it.counter.display()* -- #it.body],
+    )
+  } else {
+    context text(
+      [#it.body],
+    )
+  }
 
   // Configure the figure caption alignment:
   // if figure caption has more than one line,
@@ -92,6 +116,24 @@
   // show raw.line: it => if it.count > 1 {
   //   text(fill: luma(150), str(it.number)) + h(2em) + it.body
   // } else { it }
+
+  // Contents configuration
+  show outline.entry.where(
+    level: 1,
+  ): it => {
+    // make level 1 headings bold
+    if it.element.func() == heading {
+      v(1em, weak: true)
+      strong(it)
+    } // make figure prefix bold
+    else {
+      v(1em, weak: true)
+      it
+    }
+  }
+
+  show outline.entry: set text(hyphenate: false)
+  show outline: set par(justify: false)
 
   // First page configuration
   align(center + horizon)[
