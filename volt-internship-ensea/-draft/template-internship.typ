@@ -258,9 +258,15 @@
 
   show figure.where(kind: image): set figure(supplement: "Figure")
 
-  show figure.caption: it => context text(
-    [*#it.supplement #it.counter.display()* -- #it.body],
-  )
+  show figure.caption: it => if not (it.numbering == none) {
+    context text(
+      [*#it.supplement #it.counter.display()* -- #it.body],
+    )
+  } else {
+    context text(
+      [#it.body],
+    )
+  }
 
   // Configure the figure caption alignment:
   // if figure caption has more than one line,
@@ -478,18 +484,22 @@
   pagebreak()
   // Contents configuration
   show outline.entry.where(
-    // make level 1 headings bold
     level: 1,
   ): it => {
-    // only apply to entries that are not for figures or tables
+    // make level 1 headings bold
     if it.element.func() == heading {
-      v(12pt, weak: true)
+      v(1em, weak: true)
       strong(it)
+    } // make figure prefix bold
+    else if (it.element.func() == figure) {
+      v(1em, weak: true)
+      [#strong(it.prefix()) #it.body() #box(width: 1fr, it.fill)  #it.page()]
     } else {
-      v(12pt, weak: true)
+      v(1em, weak: true)
       it
     }
   }
+
   show outline.entry: set text(hyphenate: false)
   show outline: set par(justify: false)
 

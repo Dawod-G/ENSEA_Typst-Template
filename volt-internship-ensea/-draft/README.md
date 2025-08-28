@@ -82,7 +82,7 @@ typst init @preview/volt-internship-ensea:0.1.2
 
 v- draft :
 - Add equation numbering based on chapter (e.g., 1.1, 1.2, 2.1)  
-- Add bold to equation numbering and figure captions  
+- Add bold to equation numbering and figure prefix, and also to figure prefix in the list of tables and list of figures  
 - Move the abstract just after the acknowledgements  
 - Fix groups in glossary  
 - Fix heading spacing
