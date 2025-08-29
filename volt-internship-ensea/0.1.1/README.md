@@ -15,18 +15,20 @@ typst init @preview/volt-internship-ensea:0.1.1
 
 ## Default Values
 
-| Parameter                | Default Value  | Description                            | Mandatory  |
-|--------------------------|----------------|----------------------------------------|------------|
-| `company-logo`            | `none`         | Path to the company logo               | ✅         |
-| `authors`                | `none`         | Name(s) of the report author(s)        | ✅         |
-| `student-info`            | `none`         | Information about the student(s)       | ✅         |
-| `title`                  | `none`         | Title of the internship report         | ✅         |
-| `internship-details`      | `none`         | Company name, location, duration, etc. | ✅         |
-| `enable-list-figures`    | `true`         | Enable the list of figures             | ❌         |
-| `enable-list-tables`     | `false`        | Enable the list of tables              | ❌         |
-| `enable-glossary`         | `false`        | Enable the glossary                    | ❌         |
-| `enable-abstract`         | `true`         | Enable the abstract                    | ❌         |
-| `enable-bibliography`     | `true`         | Enable the bibliography                | ❌         |
+| Parameter                 | Default Value  | Description                             | Mandatory |
+|---------------------------|----------------|-----------------------------------------|-----------|
+| `company-logo`            | `none`         | Path to the company logo                | ✅        |
+| `authors`                 | `none`         | Name(s) of the report author(s)         | ✅        |
+| `student-info`            | `none`         | Information about the student(s)        | ✅        |
+| `title`                   | `none`         | Title of the internship report          | ✅        |
+| `internship-details`      | `none`         | Company name, location, duration, etc.  | ✅        |
+| `enable-list-figures`     | `true`         | Enable the list of figures              | ❌        |
+| `enable-list-tables`      | `false`        | Enable the list of tables               | ❌        |
+| `enable-list-appendices`  | `false`        | Enable the list of appendices           | ❌        |
+| `enable-glossary`         | `false`        | Enable the glossary                     | ❌        |
+| `enable-abstract`         | `true`         | Enable the abstract                     | ❌        |
+| `enable-bibliography`     | `true`         | Enable the bibliography                 | ❌        |
+| `enable-appendices`       | `true`         | Enable the appendices                   | ❌        |
 
 ## Example
 
