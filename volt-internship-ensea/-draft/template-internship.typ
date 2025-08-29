@@ -133,7 +133,7 @@
   counter(heading).update(0)
 
   // I hope no one will use the 'supplement' option for appendices ^_^
-  show heading.where(level: 1): set heading(supplement: "showAppendices")
+  show heading.where(): set heading(supplement: "showAppendices")
 
   // From the Polytechnique Typst Template by remigerme:
   // https://github.com/remigerme/typst-polytechnique

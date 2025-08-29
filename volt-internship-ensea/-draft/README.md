@@ -88,6 +88,7 @@ v- draft :
 - Add equation numbering based on chapter (e.g., 1.1, 1.2, 2.1)  
 - Add bold to equation numbering and figure prefix, and also to figure prefix in the list of tables and list of figures  
 - Move the abstract just after the acknowledgements  
+- Fix appendices in outline for headings with level > 1  
 - Fix groups in glossary  
 - Fix heading spacing
 
