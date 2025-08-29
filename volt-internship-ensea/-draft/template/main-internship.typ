@@ -40,24 +40,16 @@
     - Mme *Marie DUBOIS*, Responsable des Opérations #linebreak()
   ],
 
+  // Optional variable, check the README for a full list
+  // https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-internship-ensea/0.1.2/README.md
+
   // Enable the list of figures
   enable-list-figures: true,
   // Enable the list of tables
   enable-list-tables: true,
-  // Enable the list of appendices
-  enable-list-appendices: true,
-  // Enable the glossary section
-  enable-glossary: true,
-  // Enable the abstract section
-  enable-abstract: true,
-  // Enable the bibliography
-  enable-bibliography: true,
-  // Enable the appendix section
-  enable-appendices: true,
 )
 
 // ============================
-// START HERE
 // DELETE THE LINES BELOW THIS COMMENT
 // ============================
 

@@ -175,7 +175,7 @@
   enable-bibliography: true,
   enable-appendices: true,
   // File to import
-  ABSTRACT: none,
+  abstract: none,
   acknowledgements: none,
   appendices: none,
   references: none,
@@ -478,7 +478,7 @@
   if (enable-abstract) {
     pagebreak()
     heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
-    ABSTRACT
+    abstract
   }
 
   pagebreak()

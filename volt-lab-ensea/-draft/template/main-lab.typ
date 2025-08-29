@@ -28,7 +28,6 @@
 )
 
 // ============================
-// START HERE
 // DELETE THE LINES BELOW THIS COMMENT
 // ============================
 

@@ -2,6 +2,8 @@
 
 Unofficial template for internship reports at ENSEA, a French engineering school.
 
+## README [here](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-internship-ensea/0.1.2/README.md)
+
 ## Usage
 
 Either use this template in the Typst web app:

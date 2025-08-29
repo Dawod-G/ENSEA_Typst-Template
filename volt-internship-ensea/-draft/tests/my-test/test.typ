@@ -10,7 +10,7 @@
 #import "@preview/volt-internship-ensea:0.1.2": *
 
 #show: internship.with(
-  ABSTRACT: abstract(),
+  abstract: abstract(),
   acknowledgements: acknowledgements(),
   appendices: annexes(),
   references: bibliography("../../template/references.bib", full: true),
@@ -60,7 +60,6 @@
 )
 
 // ============================
-// START HERE
 // DELETE THE LINES BELOW THIS COMMENT
 // ============================
 

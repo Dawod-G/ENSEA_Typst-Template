@@ -2,6 +2,8 @@
 
 Unofficial template for lab reports at ENSEA, a French engineering school.
 
+## README [here](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-lab-ensea/0.1.0/README.md)
+
 ## Usage
 
 Either use this template in the Typst web app:
@@ -15,10 +17,10 @@ typst init @preview/volt-lab-ensea:0.1.0
 
 ## Default Values
 
-| Parameter       | Default Value | Description                                          |
-|-----------------|---------------|------------------------------------------------------|
-| `title`         | `none`        | Title of the lab report                              |
-| `authors`       | `none`        | Name(s) of the student(s) contributing to the report |
+| Parameter        | Default Value | Description                                          |
+|------------------|---------------|------------------------------------------------------|
+| `title`          | `none`        | Title of the lab report                              |
+| `authors`        | `none`        | Name(s) of the student(s) contributing to the report |
 | `student-info`   | `none`        | Information about the student(s)                     |
 | `lab-description`| `none`        | Description of the lab objectives                    |
 
