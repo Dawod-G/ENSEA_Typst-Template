@@ -9,10 +9,10 @@ description = "Unofficial template for internship reports at ENSEA, a French eng
 repository = "https://github.com/Dawod-G/ENSEA_Typst-Template"
 keywords = ["ensea", "school", "engineering", "report"]
 categories = ["report"]
-exclude = ["thumbnail-internship-1.png", "thumbnail-internship-2.png", "thumbnail-internship-3.png", "thumbnail-internship-4.png", "thumbnail-internship-5.png", "thumbnail-internship-6.png", "/tests/*"]
+exclude = ["/thumbnail/*", "/tests/*"]
 
 
 [template]
 path = "template"
 entrypoint = "main-internship.typ"
-thumbnail = "thumbnail-internship-1.png"
+thumbnail = "./thumbnail/thumbnail-internship-1.png"

@@ -52,8 +52,8 @@ All fields listed above are **mandatory**.
 ```
 
 <p align="center">
-  <img src="thumbnail-lab-1.png" width="250" />
-  <img src="thumbnail-lab-2.png" width="250" />
+  <img src="./thumbnail/thumbnail-lab-1.png" width="250" />
+  <img src="./thumbnail/thumbnail-lab-2.png" width="250" />
 </p>
 
 ## Changelog

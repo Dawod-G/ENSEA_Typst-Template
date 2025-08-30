@@ -8,9 +8,9 @@ description = "Unofficial template for lab reports at ENSEA, a French engineerin
 repository = "https://github.com/Dawod-G/ENSEA_Typst-Template"
 keywords = ["ensea", "school", "engineering", "report"]
 categories = ["report"]
-exclude = ["thumbnail-lab-1.png", "thumbnail-lab-2.png", "/tests/*"]
+exclude = ["/thumbnail/*", "/tests/*"]
 
 [template]
 path = "template"
 entrypoint = "main-lab.typ"
-thumbnail = "thumbnail-lab-1.png"
+thumbnail = "./thumbnail/thumbnail-lab-1.png"

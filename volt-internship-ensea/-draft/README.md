@@ -72,14 +72,57 @@ typst init @preview/volt-internship-ensea:0.1.2
 ```
 
 <p align="center">
-  <img src="thumbnail-internship-1.png" width="250" />
-  <img src="thumbnail-internship-2.png" width="250" />
+  <img src="./thumbnail/thumbnail-internship-1.png" width="250" />
+  <img src="./thumbnail/thumbnail-internship-2.png" width="250" />
   <br/>
-  <img src="thumbnail-internship-3.png" width="250" />
-  <img src="thumbnail-internship-4.png" width="250" />
+  <img src="./thumbnail/thumbnail-internship-3.png" width="250" />
+  <img src="./thumbnail/thumbnail-internship-4.png" width="250" />
     <br/>
-  <img src="thumbnail-internship-5.png" width="250" />
-  <img src="thumbnail-internship-6.png" width="250" />
+  <img src="./thumbnail/thumbnail-internship-5.png" width="250" />
+  <img src="./thumbnail/thumbnail-internship-6.png" width="250" />
+</p>
+
+## Custom fonction
+### `named-equation()`
+
+The function `named-equation(equation, label, name)` associates a description and a label with an equation, allowing its name to be displayed in the list of equations.
+
+```typst
+#set math.equation(numbering: "(1)")
+
+#outline(target: math.equation, title: "List of Equations") \
+
+with `named-equation`:
+#named-equation(
+  $ P =I^2 times R $,
+  <Effet-Joule>,
+  [Effet Joule],
+)
+
+without `named-equation`:
+$ U =R times I $
+```
+
+<p align="center">
+  <img src="./thumbnail/named-equation.png" width="500" />
+</p>
+
+### `abstract-config()`
+
+The function `abstract-config(language, doc)` defines the border and background of the abstract based on the language parameter, which can take the values `FRENCH` or `ENGLISH`.
+
+```typst
+#abstract-config(language: "FRENCH")[
+  #lorem(25)
+]
+
+#abstract-config(language: "ENGLISH")[
+  #lorem(25)
+]
+```
+
+<p align="center">
+  <img src="./thumbnail/abstract-config.png" width="500" />
 </p>
 
 ## Changelog
