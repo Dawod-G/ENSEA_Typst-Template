@@ -27,13 +27,13 @@ typst init @preview/volt-internship-ensea:0.1.2
 | `enable-abstract`         | `true`         | Enable the abstract                     | ❌        |
 | `enable-list-figures`     | `true`         | Enable the list of figures              | ❌        |
 | `enable-list-tables`      | `false`        | Enable the list of tables               | ❌        |
+| `enable-list-equations`   | `false`        | Enable the list of equations            | ❌        |
 | `enable-list-appendices`  | `false`        | Enable the list of appendices           | ❌        |
 | `enable-glossary`         | `false`        | Enable the glossary                     | ❌        |
 | `enable-bibliography`     | `true`         | Enable the bibliography                 | ❌        |
 | `enable-appendices`       | `true`         | Enable the appendices                   | ❌        |
 
 ## Example
-
 ```typst
 #import "@preview/glossy:0.8.0": *
 #show: init-glossary.with(yaml("glossary.yaml"), term-links: true)
@@ -85,9 +85,12 @@ typst init @preview/volt-internship-ensea:0.1.2
 ## Changelog
 
 v- draft :
+- Add the function `named-equation()`  
+- Add a list of equations and the variable `enable-list-equations`  
 - Add equation numbering based on chapter (e.g., 1.1, 1.2, 2.1)  
 - Add bold to equation numbering and figure prefix, and also to figure prefix in the list of tables and list of figures  
 - Move the abstract just after the acknowledgements  
+- Fix the link in the outline that isn't working  
 - Fix appendices in outline for headings with level > 1  
 - Fix groups in glossary  
 - Fix heading spacing

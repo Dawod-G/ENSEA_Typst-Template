@@ -45,8 +45,8 @@
 
   // Enable the list of figures
   enable-list-figures: true,
-  // Enable the list of tables
-  enable-list-tables: true,
+  // Enable the list of equations
+  enable-list-equations: true,
 )
 
 // ============================
@@ -59,7 +59,7 @@
 == Une figure pour illustrer la "Liste des figures"
 #figure(image("media/logo-ENSEA.png", width: 25%), caption: [Logo de l'ENSEA])
 
-== Une tableau pour illustrer la "Liste des tableaux"
+== Une tableau pour illustrer la "Liste des tableaux" et le "Glossaire"
 #figure(
   table(
     columns: 3,
@@ -86,12 +86,19 @@ Dans le traité "*Philosophiæ Naturalis Principia Mathematica*" @newton1833phil
 #pagebreak()
 
 = Titre de niveau 1
-#lorem(70)
+Cette équation a un nom qui apparaît dans la "Liste des équations" :
+
+#named-equation(
+  $ P =I^2 times R $,
+  <Effet-Joule>,
+  [Effet Joule],
+)
+
+Celle-ci non : $ U =R times I $
 
 == Titre de niveau 2
 #lorem(50)
 
-#underline[Loi de Joule :] $ P =I^2 times R $
 
 === Titre de niveau 3
 #lorem(35)

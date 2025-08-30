@@ -9,6 +9,54 @@
 #let ROSE-ENSEA = rgb("A6004C")
 
 // ============================
+// NAMED EQUATIONS
+// Adapted from the Typst Discord
+// https://discord.com/channels/1054443721975922748/1056574658771681361/1371882238735679508
+// ============================
+
+#let names = state("EQUATION-NAMES", (:))
+
+#let named-equation(eq, label, description) = {
+  names.update(map => {
+    map.insert(str(label), description)
+    map
+  })
+  [#eq#label]
+}
+
+// ============================
+// ABSTRACT CONFIGURATION
+// ============================
+
+#let abstract-config(language: none, doc) = {
+  if language == "FRENCH" {
+    heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
+    block(
+      fill: none,
+      stroke: rgb("CCCCCC"),
+      inset: 8pt,
+      outset: 5pt,
+      radius: 10pt,
+      [#heading(numbering: none, outlined: false)[Résumé]
+        #doc],
+    )
+  } else if language == "ENGLISH" {
+    heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
+    block(
+      fill: rgb("EEEEEE"),
+      stroke: none,
+      inset: 8pt,
+      outset: 5pt,
+      radius: 10pt,
+      [#heading(numbering: none, outlined: false)[Abstract]
+        #doc],
+    )
+  } else {
+    panic("Language must be either `FRENCH` or `ENGLISH`")
+  }
+}
+
+// ============================
 // GLOSSARY CONFIGURATION
 // ============================
 
@@ -94,37 +142,6 @@
   doc
 }
 
-
-// ============================
-// ABSTRACT CONFIGURATION
-// ============================
-
-#let abstract-config(language: none, doc) = {
-  if language == "FRENCH" {
-    block(
-      fill: none,
-      stroke: rgb("CCCCCC"),
-      inset: 8pt,
-      outset: 5pt,
-      radius: 10pt,
-      [#heading(numbering: none, outlined: false)[Résumé]
-        #doc],
-    )
-  } else if language == "ENGLISH" {
-    block(
-      fill: rgb("EEEEEE"),
-      stroke: none,
-      inset: 8pt,
-      outset: 5pt,
-      radius: 10pt,
-      [#heading(numbering: none, outlined: false)[Abstract]
-        #doc],
-    )
-  } else {
-    panic("Language must be either `FRENCH` or `ENGLISH`")
-  }
-}
-
 // ============================
 // APPENDIX CONFIGURATION
 // ============================
@@ -169,6 +186,7 @@
   // Optional variables
   enable-list-figures: true,
   enable-list-tables: false,
+  enable-list-equations: false,
   enable-list-appendices: false,
   enable-glossary: false,
   enable-abstract: true,
@@ -225,8 +243,15 @@
   // lang: https://en.wikipedia.org/wiki/ISO_639
   // region: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 
-  // Display links in blue.
-  show link: set text(fill: blue.darken(40%))
+  // Display links in blue, except in the outline
+  show link: it => {
+    if type(it.dest) == location {
+      it
+    } else {
+      set text(fill: blue.darken(40%))
+      it
+    }
+  }
 
   set heading(numbering: "I.1.a.")
   show heading: set text(hyphenate: false)
@@ -280,7 +305,7 @@
       } else {
         my-align = left
       }
-      #align(my-align, text(size: 8pt)[#emph(it)])
+      #align(my-align, text(size: 8pt)[#it])
     ])
   }
 
@@ -477,7 +502,6 @@
 
   if (enable-abstract) {
     pagebreak()
-    heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
     abstract
   }
 
@@ -493,9 +517,30 @@
     } // make figure prefix bold
     else if (it.element.func() == figure) {
       v(1em, weak: true)
-      [#strong(it.prefix()) #it.body() #box(width: 1fr, it.fill)  #it.page()]
-    } else {
+      link(
+        it.element.location(), // make entry linkable
+        it.indented(strong(it.prefix()), it.inner()),
+      )
+    } // make named-equation prefix bold
+    else if (
+      (it.element.func() == math.equation) and (it.element.has("label"))
+    ) {
       v(1em, weak: true)
+      let description = names.final().at(str(it.element.label), default: none)
+      link(
+        it.element.location(), // make entry linkable
+        it.indented(strong(it.prefix()), { description + it.inner() }),
+      )
+    } // make equation prefix bold
+    else if (
+      (it.element.func() == math.equation) and not (it.element.has("label"))
+    ) {
+      v(1em, weak: true)
+      link(
+        it.element.location(), // make entry linkable
+        it.indented(strong(it.prefix()), it.inner()),
+      )
+    } else {
       it
     }
   }
@@ -506,8 +551,7 @@
   if not (enable-list-appendices) {
     outline(
       title: [Table des matières],
-      indent: 1em,
-      // depth: 2,
+      // indent: 1em,
     )
   } else {
     // From Reddit:
@@ -516,8 +560,7 @@
       let qrytarget = heading // ou figure, un label, un sélecteur, etc...
       outline(
         title: [Table des matières],
-        indent: 1em,
-        // depth: 2,
+        // indent: 1em,
         target: selector.or(
           ..query(qrytarget)
             .filter(it => it.supplement != [showAppendices])
@@ -532,7 +575,7 @@
     pagebreak()
     heading(numbering: none)[Liste des figures]
     v(HEADING-LVL-1-SPACING - 0.5em)
-    outline(indent: 1em, title: none, target: figure.where(kind: image))
+    outline(title: none, target: figure.where(kind: image))
   }
 
   // Table contents configuration
@@ -540,7 +583,15 @@
     pagebreak()
     heading(numbering: none)[Liste des tableaux]
     v(HEADING-LVL-1-SPACING - 0.5em)
-    outline(indent: 1em, title: none, target: figure.where(kind: table))
+    outline(title: none, target: figure.where(kind: table))
+  }
+
+  // Equation contents configuration
+  if (enable-list-equations) {
+    pagebreak()
+    heading(numbering: none)[Liste des équations]
+    v(HEADING-LVL-1-SPACING - 0.5em)
+    outline(title: none, target: math.equation)
   }
 
   // Appendix contents configuration
@@ -548,7 +599,7 @@
     pagebreak()
     heading(numbering: none)[Liste des annexes]
     v(HEADING-LVL-1-SPACING - 0.5em)
-    outline(indent: 1em, title: none, target: heading.where(
+    outline(title: none, target: heading.where(
       supplement: [showAppendices],
     ))
   }
