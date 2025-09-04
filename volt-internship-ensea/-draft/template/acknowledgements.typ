@@ -1,5 +1,3 @@
-#let acknowledgements() = {
-  text[
-    #lorem(250)
-  ]
-}
+#let acknowledgements() = [
+  #lorem(250)
+]
