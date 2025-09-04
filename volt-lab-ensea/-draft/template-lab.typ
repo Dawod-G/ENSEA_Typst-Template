@@ -204,11 +204,11 @@
             ]]
         ],
       )
-      #box(width: 100%, height: 1pt, fill: black)
+      #line(length: 100%)
     ],
 
     footer: context [
-      #place(top + left, dy: -5pt, box(width: 100%, height: 1pt, fill: black))
+      #place(top + left, dy: -5pt, line(length: 100%))
       #stack(
         dir: ltr,
 

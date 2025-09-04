@@ -30,7 +30,7 @@
 
 #let abstract-config(language: none, doc) = {
   if language == "FRENCH" {
-    heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
+    text(size: 0pt)[#heading(outlined: false, numbering: none)[]] // to avoid Hydra(1) in the footer
     block(
       fill: none,
       stroke: rgb("CCCCCC"),
@@ -41,14 +41,15 @@
         #doc],
     )
   } else if language == "ENGLISH" {
-    heading(outlined: false, numbering: none)[] // to avoid Hydra(1) in the footer
+    text(size: 0pt)[#heading(outlined: false, numbering: none)[]] // to avoid Hydra(1) in the footer
     block(
       fill: rgb("EEEEEE"),
-      stroke: none,
+      stroke: rgb("EEEEEE"),
       inset: 8pt,
       outset: 5pt,
       radius: 10pt,
-      [#heading(numbering: none, outlined: false)[Abstract]
+      [#set text(lang: "en")
+        #heading(numbering: none, outlined: false)[Abstract]
         #doc],
     )
   } else {
@@ -127,9 +128,6 @@
       let nums = nums.pos()
 
       let level = nums.len() - 1
-
-      // Indentation could be calculated based on the level
-      // let indent = level * 1em
 
       // Define the number to display based on the position in the hierarchy
       let num = nums.last()
@@ -312,12 +310,6 @@
   // Configure the raw block properties
   show raw.where(block: true): set par(justify: false)
 
-  // // From the INSA Typst Template by SkytAsul:
-  // // https://github.com/SkytAsul/INSA-Typst-Template
-  // show raw.line: it => if it.count > 1 {
-  //   text(fill: luma(150), str(it.number)) + h(2em) + it.body
-  // } else { it }
-
   // Adapted from the Typst forum:
   // https://forum.typst.app/t/how-to-change-numbering-in-appendix/1716/5
   let BACKMATTER(content) = {
@@ -463,11 +455,11 @@
         align(right + horizon, company-logo),
       )
 
-      #box(width: 100%, height: 1pt, fill: black)
+      #line(length: 100%)
     ],
 
     footer: context [
-      #place(top + left, dy: -5pt, box(width: 100%, height: 1pt, fill: black))
+      #place(top, dy: -5pt, line(length: 100%))
 
       #stack(
         dir: ltr,
