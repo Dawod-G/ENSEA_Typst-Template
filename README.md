@@ -8,7 +8,7 @@ Custom templates for documents made at ENSEA.
 [README](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/master/src/README-letter.md)
 
 <p align="center">
-  <img src="src/thumbnail-letter.png" width="250" />
+  <img src="src//thumbnail/thumbnail-letter.png" width="250" />
 </p> -->
 
 ## Lab template: for lab reports (v0.1.1)
@@ -17,8 +17,8 @@ Custom templates for documents made at ENSEA.
 [README](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-lab-ensea/0.1.1/README.md)
 
 <p align="center">
-  <img src="volt-lab-ensea/0.1.1/thumbnail-lab-1.png" width="250" />
-  <img src="volt-lab-ensea/0.1.1/thumbnail-lab-2.png" width="250" />
+  <img src="volt-lab-ensea/0.1.1//thumbnail/thumbnail-lab-1.png" width="250" />
+  <img src="volt-lab-ensea/0.1.1//thumbnail/thumbnail-lab-2.png" width="250" />
 </p>
 
 ## Internship template: for internship reports (v0.2.0)
@@ -27,14 +27,14 @@ Custom templates for documents made at ENSEA.
 [README](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-internship-ensea/0.2.0/README.md)
 
 <p align="center">
-  <img src="volt-internship-ensea/0.2.0/thumbnail-internship-1.png" width="250" />
-  <img src="volt-internship-ensea/0.2.0/thumbnail-internship-2.png" width="250" />
+  <img src="volt-internship-ensea/0.2.0//thumbnail/thumbnail-internship-1.png" width="250" />
+  <img src="volt-internship-ensea/0.2.0//thumbnail/thumbnail-internship-2.png" width="250" />
   <br/>
-  <img src="volt-internship-ensea/0.2.0/thumbnail-internship-3.png" width="250" />
-  <img src="volt-internship-ensea/0.2.0/thumbnail-internship-4.png" width="250" />
+  <img src="volt-internship-ensea/0.2.0//thumbnail/thumbnail-internship-3.png" width="250" />
+  <img src="volt-internship-ensea/0.2.0//thumbnail/thumbnail-internship-4.png" width="250" />
   <br/>
-  <img src="volt-internship-ensea/0.2.0/thumbnail-internship-5.png" width="250" />
-  <img src="volt-internship-ensea/0.2.0/thumbnail-internship-6.png" width="250" />
+  <img src="volt-internship-ensea/0.2.0//thumbnail/thumbnail-internship-5.png" width="250" />
+  <img src="volt-internship-ensea/0.2.0//thumbnail/thumbnail-internship-6.png" width="250" />
 </p>
 
 ## Contributions
