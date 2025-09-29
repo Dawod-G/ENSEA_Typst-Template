@@ -7,7 +7,7 @@
 #import "../../template/acknowledgements.typ": *
 #import "../../template/appendices.typ": *
 
-#import "@preview/volt-internship-ensea:0.1.2": *
+#import "@preview/volt-internship-ensea:0.2.0": *
 
 #show: internship.with(
   abstract: abstract(),
@@ -43,10 +43,15 @@
     - Mme *Marie DUBOIS*, Responsable des Opérations #linebreak()
   ],
 
+  // Optional variable, check the README for a full list
+  // https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-internship-ensea/0.2.0/README.md
+
   // Enable the list of figures
   enable-list-figures: true,
   // Enable the list of tables
   enable-list-tables: true,
+  // Enable the list of equations
+  enable-list-equations: true,
   // Enable the list of appendices
   enable-list-appendices: true,
   // Enable the glossary section
@@ -72,7 +77,7 @@
   caption: [Logo de l'ENSEA],
 )
 
-== Une tableau pour illustrer la "Liste des tableaux"
+== Une tableau pour illustrer la "Liste des tableaux" et le "Glossaire"
 #figure(
   table(
     columns: 3,
@@ -99,12 +104,18 @@ Dans le traité "*Philosophiæ Naturalis Principia Mathematica*" @newton1833phil
 #pagebreak()
 
 = Titre de niveau 1
-#lorem(70)
+Cette équation a un nom qui apparaît dans la "Liste des équations" :
+
+#named-equation(
+  $ P =I^2 times R $,
+  <Effet-Joule>,
+  [Effet Joule],
+)
+
+Celle-ci non : $ U =R times I $
 
 == Titre de niveau 2
 #lorem(50)
-
-#underline[Loi de Joule :] $ P =I^2 times R $
 
 === Titre de niveau 3
 #lorem(35)
