@@ -127,7 +127,7 @@ The function `abstract-config(language, doc)` defines the border and background 
 
 ## Changelog
 
-v- draft :
+v0.2.0 :
 - Add the function `named-equation()`  
 - Add a list of equations and the variable `enable-list-equations`  
 - Add equation numbering based on chapter (e.g., 1.1, 1.2, 2.1)  
@@ -138,7 +138,7 @@ v- draft :
 - Fix groups in glossary  
 - Fix heading spacing
 
-v0.2.0 : Fix import issue  
+v0.1.2 : Fix import issue  
 v0.1.1 : Fix import issue  
 v0.1.0 : Initial release
 

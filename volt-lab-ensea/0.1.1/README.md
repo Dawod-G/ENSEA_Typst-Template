@@ -58,12 +58,12 @@ All fields listed above are **mandatory**.
 
 ## Changelog
 
-v- draft :
+v0.1.1 :
 - Disable hyphenation and paragraph justification in outline  
 - Add bold to equation numbering and figure prefix  
 - Fix heading spacing
 
-v0.1.1 : Initial release
+v0.1.0 : Initial release
 
 ## Contributions
 
