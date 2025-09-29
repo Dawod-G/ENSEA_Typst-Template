@@ -4,7 +4,7 @@
 #import "acknowledgements.typ": *
 #import "appendices.typ": *
 
-#import "@preview/volt-internship-ensea:0.1.2": *
+#import "@preview/volt-internship-ensea:0.2.0": *
 
 #show: internship.with(
   abstract: abstract(),
@@ -41,7 +41,7 @@
   ],
 
   // Optional variable, check the README for a full list
-  // https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-internship-ensea/0.1.2/README.md
+  // https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-internship-ensea/0.2.0/README.md
 
   // Enable the list of figures
   enable-list-figures: true,
@@ -98,7 +98,6 @@ Celle-ci non : $ U =R times I $
 
 == Titre de niveau 2
 #lorem(50)
-
 
 === Titre de niveau 3
 #lorem(35)

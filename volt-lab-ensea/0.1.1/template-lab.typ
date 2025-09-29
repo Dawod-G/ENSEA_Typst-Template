@@ -104,7 +104,7 @@
       } else {
         my-align = left
       }
-      #align(my-align, text(size: 8pt)[#emph(it)])
+      #align(my-align, text(size: 8pt)[#it])
     ])
   }
 
@@ -208,7 +208,7 @@
     ],
 
     footer: context [
-      #place(top + left, dy: -5pt, line(length: 100%))
+      #place(top, dy: -5pt, line(length: 100%))
       #stack(
         dir: ltr,
 

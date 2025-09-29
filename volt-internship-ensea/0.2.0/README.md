@@ -2,17 +2,17 @@
 
 Unofficial template for internship reports at ENSEA, a French engineering school.
 
-## README [here](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-internship-ensea/0.1.2/README.md)
+## README [here](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-internship-ensea/0.2.0/README.md)
 
 ## Usage
 
 Either use this template in the Typst web app:
 ```typst
-#import "@preview/volt-internship-ensea:0.1.2": *
+#import "@preview/volt-internship-ensea:0.2.0": *
 ```
 or use the command line to initialize a new project based on this template:
 ```typst
-typst init @preview/volt-internship-ensea:0.1.2
+typst init @preview/volt-internship-ensea:0.2.0
 ```
 
 ## Default Values
@@ -41,7 +41,7 @@ typst init @preview/volt-internship-ensea:0.1.2
 #import "acknowledgements.typ": *
 #import "appendices.typ": *
 
-#import "@preview/volt-internship-ensea:0.1.2": *
+#import "@preview/volt-internship-ensea:0.2.0": *
 
 #show: internship.with(
   abstract: abstract(),
@@ -138,7 +138,7 @@ v- draft :
 - Fix groups in glossary  
 - Fix heading spacing
 
-v0.1.2 : Fix import issue  
+v0.2.0 : Fix import issue  
 v0.1.1 : Fix import issue  
 v0.1.0 : Initial release
 

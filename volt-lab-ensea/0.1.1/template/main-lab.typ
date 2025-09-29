@@ -1,4 +1,4 @@
-#import "@preview/volt-lab-ensea:0.1.0": *
+#import "@preview/volt-lab-ensea:0.1.1": *
 
 // ============================
 // VARIABLES TO MODIFY

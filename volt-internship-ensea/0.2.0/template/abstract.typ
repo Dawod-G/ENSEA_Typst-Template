@@ -1,4 +1,4 @@
-#import "@preview/volt-internship-ensea:0.1.2": abstract-config
+#import "@preview/volt-internship-ensea:0.2.0": abstract-config
 
 #let abstract() = [
   #abstract-config(language: "FRENCH")[

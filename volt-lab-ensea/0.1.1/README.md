@@ -2,17 +2,17 @@
 
 Unofficial template for lab reports at ENSEA, a French engineering school.
 
-## README [here](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-lab-ensea/0.1.0/README.md)
+## README [here](https://github.com/Dawod-G/ENSEA_Typst-Template/blob/main/volt-lab-ensea/0.1.1/README.md)
 
 ## Usage
 
 Either use this template in the Typst web app:
 ```typst
-#import "@preview/volt-lab-ensea:0.1.0": *
+#import "@preview/volt-lab-ensea:0.1.1": *
 ```
 or use the command line to initialize a new project based on this template:
 ```typst
-typst init @preview/volt-lab-ensea:0.1.0
+typst init @preview/volt-lab-ensea:0.1.1
 ```
 
 ## Default Values
@@ -29,7 +29,7 @@ All fields listed above are **mandatory**.
 ## Example
 
 ```typst
-#import "@preview/volt-lab-ensea:0.1.0": *
+#import "@preview/volt-lab-ensea:0.1.1": *
 
 #show: report.with(
   title: [#lorem(10)],
@@ -63,7 +63,7 @@ v- draft :
 - Add bold to equation numbering and figure prefix  
 - Fix heading spacing
 
-v0.1.0 : Initial release
+v0.1.1 : Initial release
 
 ## Contributions
 
